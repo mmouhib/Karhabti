@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karhabti", "Karhabti\Karhabti.csproj", "{3132B97B-1CD5-49C4-85BD-E71077E2EF55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karhabti.Api", "Karhabti.Api\Karhabti.Api.csproj", "{3132B97B-1CD5-49C4-85BD-E71077E2EF55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
