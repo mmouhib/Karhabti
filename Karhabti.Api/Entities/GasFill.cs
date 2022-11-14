@@ -5,10 +5,10 @@ namespace Karhabti.Entities;
 
 public class GasFill
 {
-    [Key] public Guid GasFillId { get; set; }
-    [Required] public int GasFillQuantity { get; set; }
-    [Required] public DateTime GasFillDate { get; set; }
-    [Required] public double GasFillPrice { get; set; }
-    [Required] public string GasFillUnit { get; set; }
+    [Key] public Guid Id { get; set; }
+    [Required] public int Quantity { get; set; }
+    [Required] public DateTime Date { get; set; }
+    [Required] public double Price { get; set; }
+    [Required] public string Unit { get; set; }
     [Required] [ForeignKey("Car")] public Guid CarId { get; set; }
 }

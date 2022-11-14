@@ -5,8 +5,8 @@ namespace Karhabti.Entities;
 
 public class Mileage
 {
-    [Key] public Guid MileageId { get; set; }
-    [Required] public int MileageQuantity { get; set; }
-    [Required] public string MileageUnit { get; set; }
+    [Key] public Guid Id { get; set; }
+    [Required] public int Quantity { get; set; }
+    [Required] public string Unit { get; set; }
     [Required] [ForeignKey("Car")] public Guid CarId { get; set; }
 }

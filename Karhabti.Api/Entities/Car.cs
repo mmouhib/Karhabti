@@ -7,15 +7,15 @@ public class Car
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public Guid CarId { get; set; }
+    public Guid Id { get; set; }
 
-    [Required] public string CarModel { get; set; }
-    [Required] public int CarPower { get; set; }
-    [Required] public int CarYear { get; set; }
-    [Required] public string CarColor { get; set; }
-    [Required] public int CarEngineSize { get; set; }
-    [Required] public string CarGasType { get; set; }
-    [Required] public string CarBodyType { get; set; }
+    [Required] public string Model { get; set; }
+    [Required] public int Power { get; set; }
+    [Required] public int Year { get; set; }
+    [Required] public string Color { get; set; }
+    [Required] public int EngineSize { get; set; }
+    [Required] public string GasType { get; set; }
+    [Required] public string BodyType { get; set; }
 
     [Required] [ForeignKey("User")] public Guid UserId { get; set; }
 

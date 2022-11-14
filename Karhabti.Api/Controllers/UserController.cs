@@ -45,6 +45,10 @@ public class UserController : ControllerBase
         _repository.Add(mappedUserToPost);
         _unitOfWork.Commit();
         var userResult = _mapper.Map<UserGetDto>(mappedUserToPost);
-        return CreatedAtRoute(nameof(GetById), new { id = userResult.UserId }, userResult);
+        return CreatedAtRoute(
+            nameof(GetById),
+            new { id = userResult.Id },
+            userResult
+        );
     }
 }

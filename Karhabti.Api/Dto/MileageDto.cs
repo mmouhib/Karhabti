@@ -2,12 +2,12 @@
 
 public class MileagePostDto
 {
-    public int MileageQuantity { get; set; }
-    public string MileageUnit { get; set; }
+    public int Quantity { get; set; }
+    public string Unit { get; set; }
     public Guid CarId { get; set; }
 }
 
 public class MileageGetDto : MileagePostDto
 {
-    public Guid MileageId { get; set; }
+    public Guid Id { get; set; }
 }

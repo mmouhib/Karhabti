@@ -2,18 +2,18 @@
 
 public class CarGetDto
 {
-    public string CarModel { get; set; }
-    public int CarPower { get; set; }
-    public int CarYear { get; set; }
-    public string CarColor { get; set; }
-    public int CarEngineSize { get; set; }
-    public string CarGasType { get; set; }
-    public string CarBodyType { get; set; }
+    public string Model { get; set; }
+    public int Power { get; set; }
+    public int Year { get; set; }
+    public string Color { get; set; }
+    public int EngineSize { get; set; }
+    public string GasType { get; set; }
+    public string BodyType { get; set; }
 
     public Guid UserId { get; set; }
 }
 
 public class CarPostDto : CarGetDto
 {
-    public Guid CardId { get; set; }
+    public Guid Id { get; set; }
 }

@@ -2,14 +2,14 @@
 
 public class GasFillPostDto
 {
-    public int GasFillQuantity { get; set; }
-    public DateTime GasFillDate { get; set; }
-    public double GasFillPrice { get; set; }
-    public string GasFillUnit { get; set; }
+    public int Quantity { get; set; }
+    public DateTime Date { get; set; }
+    public double Price { get; set; }
+    public string Unit { get; set; }
     public Guid CarId { get; set; }
 }
 
 public class GasFillGetDto : GasFillPostDto
 {
-    public Guid GasFillId { get; set; }
+    public Guid Id { get; set; }
 }
