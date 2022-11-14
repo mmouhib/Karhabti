@@ -6,5 +6,5 @@ public interface IKarhabtiBaseRepo<TEntity>
     TEntity GetById(Guid id);
     void Add(TEntity entityInstance);
     void Delete(TEntity entityInstance);
-    void Update(TEntity entityInstace);
+    void Update(TEntity entityInstance);
 }
