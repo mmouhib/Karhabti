@@ -9,7 +9,7 @@ public class User
     [Required] public string UserName { get; set; }
     [Required] public string UserEmail { get; set; }
     [Required] public string UserPassword { get; set; }
-    [Required] public DateOnly BirthDate { get; set; }
+    [Required] public DateTime BirthDate { get; set; }
 
     [Required] [ForeignKey("Car")] public Guid CarId { get; set; }
 }

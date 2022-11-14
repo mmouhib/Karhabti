@@ -7,7 +7,7 @@ public class GasFill
 {
     [Key] public Guid GasFillId { get; set; }
     [Required] public int GasFillQuantity { get; set; }
-    [Required] public DateOnly GasFillDate { get; set; }
+    [Required] public DateTime GasFillDate { get; set; }
     [Required] public double GasFillPrice { get; set; }
 
     [Required] [ForeignKey("GasFillUnit")] public Guid GasFillUnitId { get; set; }
