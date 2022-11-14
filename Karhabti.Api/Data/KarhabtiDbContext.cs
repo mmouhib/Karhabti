@@ -1,8 +1,5 @@
 ﻿using Karhabti.Entities;
 using Karhabti.Entities.Car;
-using Karhabti.Entities.Engine;
-using Karhabti.Entities.GasFill;
-using Karhabti.Entities.Mileage;
 using Microsoft.EntityFrameworkCore;
 
 namespace Karhabti.Data;
@@ -13,10 +10,8 @@ public class KarhabtiDbContext : DbContext
     {
     }
 
-
     public DbSet<Car> Cars { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<GasFill> GasFills { get; set; }
     public DbSet<Mileage> Mileages { get; set; }
-    public DbSet<Engine> Engines { get; set; }
 }

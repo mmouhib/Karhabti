@@ -5,14 +5,18 @@ namespace Karhabti.Entities.Car;
 
 public class Car
 {
-    [Key] public Guid CarId { get; set; }
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key]
+    public Guid CarId { get; set; }
+
+    [Required] public string CarModel { get; set; }
     [Required] public int CarPower { get; set; }
     [Required] public int CarYear { get; set; }
+    [Required] public string CarColor { get; set; }
+    [Required] public int CarEngineSize { get; set; }
+    [Required] public string CarGasType { get; set; }
+    [Required] public string CarBodyType { get; set; }
 
-    [Required] [ForeignKey("Color")] public Guid ColorId { get; set; }
-    [Required] [ForeignKey("BodyType")] public Guid CarBodyTypeId { get; set; }
-    [Required] [ForeignKey("CarModel")] public Guid CarModelId { get; set; }
-    [Required] [ForeignKey("Engine")] public Guid EngineId { get; set; }
     [Required] [ForeignKey("User")] public Guid UserId { get; set; }
 
     public User User { get; set; }

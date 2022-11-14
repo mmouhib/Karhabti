@@ -19,7 +19,6 @@ var ConnString =
     builder.Services.AddTransient<IUserRepo, UserRepository>();
     builder.Services.AddTransient<IMileageRepo, MileageRepository>();
     builder.Services.AddTransient<IGasFillRepo, GasFillRepository>();
-    builder.Services.AddTransient<IEngineRepo, EngineRepository>();
 
     // DbContext DE
     builder.Services.AddDbContext<KarhabtiDbContext>(options => { options.UseSqlServer(ConnString); });
