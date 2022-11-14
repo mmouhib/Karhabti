@@ -1,5 +1,5 @@
 ﻿using Karhabti.Data.Interfaces;
-using Karhabti.Entities.Mileage;
+using Karhabti.Entities;
 
 namespace Karhabti.Data.Repositories;
 

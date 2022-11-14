@@ -1,9 +1,9 @@
 ﻿using Karhabti.Data.Interfaces;
-using Karhabti.Entities.GasFill;
+using Karhabti.Entities;
 
 namespace Karhabti.Data.Repositories;
 
-public class GasFillRepository:IGasFillRepo
+public class GasFillRepository : IGasFillRepo
 {
     public IEnumerable<GasFill> GetAll()
     {

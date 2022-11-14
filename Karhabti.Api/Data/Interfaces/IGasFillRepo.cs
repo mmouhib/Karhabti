@@ -1,4 +1,4 @@
-﻿using Karhabti.Entities.GasFill;
+﻿using Karhabti.Entities;
 
 namespace Karhabti.Data.Interfaces;
 

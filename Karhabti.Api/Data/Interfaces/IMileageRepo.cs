@@ -1,4 +1,4 @@
-﻿using Karhabti.Entities.Mileage;
+﻿using Karhabti.Entities;
 
 namespace Karhabti.Data.Interfaces;
 

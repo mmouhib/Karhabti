@@ -17,6 +17,6 @@ public class Car
 
     public User User { get; set; }
 
-    public List<Mileage.Mileage> Mileages { get; set; }
-    public List<GasFill.GasFill> GasFills { get; set; }
+    public List<Mileage> Mileages { get; set; }
+    public List<GasFill> GasFills { get; set; }
 }

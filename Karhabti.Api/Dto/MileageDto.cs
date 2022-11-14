@@ -3,7 +3,7 @@
 public class MileagePostDto
 {
     public int MileageQuantity { get; set; }
-    public Guid MileageUnitId { get; set; }
+    public string MileageUnit { get; set; }
     public Guid CarId { get; set; }
 }
 
