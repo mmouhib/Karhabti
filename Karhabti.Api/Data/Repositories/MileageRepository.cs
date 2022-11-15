@@ -17,9 +17,9 @@ public class MileageRepository : IMileageRepo
         return _context.Mileages.ToList();
     }
 
-    public Mileage GetById(Guid id)
+    public Mileage GetById(int id)
     {
-        return _context.Mileages.FirstOrDefault(mileage => mileage.MileageId == id);
+        return _context.Mileages.FirstOrDefault(mileage => mileage.Id == id);
     }
 
     public void Add(Mileage entityInstance)

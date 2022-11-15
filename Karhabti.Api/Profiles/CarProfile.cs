@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Karhabti.Dto;
-using Karhabti.Entities.Car;
+using Karhabti.Entities;
 
 namespace Karhabti.Profiles;
 

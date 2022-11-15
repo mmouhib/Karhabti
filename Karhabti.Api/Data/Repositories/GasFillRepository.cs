@@ -10,7 +10,7 @@ public class GasFillRepository : IGasFillRepo
         throw new NotImplementedException();
     }
 
-    public GasFill GetById(Guid id)
+    public GasFill GetById(int id)
     {
         throw new NotImplementedException();
     }

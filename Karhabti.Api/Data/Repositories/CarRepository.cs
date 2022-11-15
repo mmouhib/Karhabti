@@ -1,5 +1,5 @@
 ﻿using Karhabti.Data.Interfaces;
-using Karhabti.Entities.Car;
+using Karhabti.Entities;
 
 namespace Karhabti.Data.Repositories;
 
@@ -17,9 +17,9 @@ public class CarRepository : ICarRepo
         return _context.Cars.ToList();
     }
 
-    public Car GetById(Guid id)
+    public Car GetById(int id)
     {
-        var car = _context.Cars.FirstOrDefault(car => car.CarId == id);
+        var car = _context.Cars.FirstOrDefault(car => car.Id == id);
 
         if (car == null) throw new ArgumentNullException(nameof(car));
 

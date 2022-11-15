@@ -30,8 +30,8 @@ public class UserController : ControllerBase
         return NotFound();
     }
 
-    [HttpGet("{id}", Name = "GetById")]
-    public ActionResult<UserGetDto> GetById(Guid id)
+    [HttpGet("{id}", Name = "GetUserById")]
+    public ActionResult<UserGetDto> GetUserById(int id)
     {
         var match = _repository.GetById(id);
         if (match == null) return NotFound();
@@ -46,7 +46,7 @@ public class UserController : ControllerBase
         _unitOfWork.Commit();
         var userResult = _mapper.Map<UserGetDto>(mappedUserToPost);
         return CreatedAtRoute(
-            nameof(GetById),
+            nameof(GetUserById),
             new { id = userResult.Id },
             userResult
         );

@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Karhabti.Entities.Car;
+namespace Karhabti.Entities;
 
 public class Car
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     [Required] public string Model { get; set; }
     [Required] public int Power { get; set; }
@@ -17,7 +17,7 @@ public class Car
     [Required] public string GasType { get; set; }
     [Required] public string BodyType { get; set; }
 
-    [Required] [ForeignKey("User")] public Guid UserId { get; set; }
+    [Required] [ForeignKey("User")] public int UserId { get; set; }
 
     public User User { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Karhabti.Dto;
 
-public class CarGetDto
+public class CarPostDto
 {
     public string Model { get; set; }
     public int Power { get; set; }
@@ -10,10 +10,10 @@ public class CarGetDto
     public string GasType { get; set; }
     public string BodyType { get; set; }
 
-    public Guid UserId { get; set; }
+    public int UserId { get; set; }
 }
 
-public class CarPostDto : CarGetDto
+public class CarGetDto : CarPostDto
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 }

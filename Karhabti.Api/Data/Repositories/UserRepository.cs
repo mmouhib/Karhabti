@@ -17,9 +17,9 @@ public class UserRepository : IUserRepo
         return _context.Users.ToList();
     }
 
-    public User GetById(Guid id)
+    public User GetById(int id)
     {
-        return _context.Users.FirstOrDefault(user => user.UserId == id);
+        return _context.Users.FirstOrDefault(user => user.Id == id);
     }
 
     public void Add(User entityInstance)

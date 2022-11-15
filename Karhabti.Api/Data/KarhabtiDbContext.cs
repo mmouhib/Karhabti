@@ -1,5 +1,4 @@
 ﻿using Karhabti.Entities;
-using Karhabti.Entities.Car;
 using Microsoft.EntityFrameworkCore;
 
 namespace Karhabti.Data;

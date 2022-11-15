@@ -1,4 +1,4 @@
-﻿using Karhabti.Entities.Car;
+﻿using Karhabti.Entities;
 
 namespace Karhabti.Data.Interfaces;
 
