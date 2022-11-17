@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include=".local\req_body.json" />
+      <Content Include=".local\requests.json" />
     </ItemGroup>
 
 </Project>

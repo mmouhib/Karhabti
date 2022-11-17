@@ -7,3 +7,5 @@ riderModule.iml
 
 # web api
 migrations
+.vs
+Karhabti.Api/.local
