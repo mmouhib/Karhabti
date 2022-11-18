@@ -5,28 +5,39 @@ namespace Karhabti.Data.Repositories;
 
 public class GasFillRepository : IGasFillRepo
 {
+    private readonly KarhabtiDbContext _context;
+
+    public GasFillRepository(KarhabtiDbContext context)
+    {
+        _context = context;
+    }
+
     public IEnumerable<GasFill> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.GasFills.ToList();
     }
 
     public GasFill GetById(int id)
     {
-        throw new NotImplementedException();
+        var gasFill = _context.GasFills.FirstOrDefault(gasFill => gasFill.Id == id);
+
+        if (gasFill == null) throw new ArgumentNullException(nameof(gasFill));
+
+        return gasFill;
     }
 
     public void Add(GasFill entityInstance)
     {
-        throw new NotImplementedException();
+        _context.Add(entityInstance);
     }
 
     public void Delete(GasFill entityInstance)
     {
-        throw new NotImplementedException();
+        _context.Remove(entityInstance);
     }
 
     public void Update(GasFill entityInstance)
     {
-        throw new NotImplementedException();
+        _context.Update(entityInstance);
     }
 }
