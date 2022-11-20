@@ -1,0 +1,13 @@
+:root {
+    --background: #E4DAE8;
+    --mainColor: #D0241A;
+    --lightText: #5E5E5E;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
