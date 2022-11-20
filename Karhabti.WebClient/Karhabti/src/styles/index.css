@@ -1,8 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Righteous&family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Righteous&family=Roboto&family=Rubik:wght@400;600&display=swap');
+
 :root {
     --background: #E4DAE8;
     --mainColor: #D0241A;
     --lightText: #5E5E5E;
+    --homeCarBackground: #EEA3A3;
 }
 
 
