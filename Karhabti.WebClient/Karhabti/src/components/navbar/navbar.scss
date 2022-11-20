@@ -1,5 +1,52 @@
-.navbar-container{
+.navbar-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 5px 0;
+
+  & * {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  & .nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Righteous', cursive;
+    color: var(--mainColor);
+    font-size: larger;
+  }
+
+  & .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Lato', sans-serif;
+    color: var(--lightText);
+    font-weight: bold;
+
+    & .navbar-item {
+      padding: 0 40px;
+    }
+  }
+
+  & .auth_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Righteous', cursive;
+    gap: 30px;
+
+    & .navbar-login {
+    }
+
+    & .navbar-signup {
+      padding: 9px 13px;
+      color: white;
+      background-color: var(--mainColor);
+      border-radius: 7px;
+
+    }
+  }
 }
