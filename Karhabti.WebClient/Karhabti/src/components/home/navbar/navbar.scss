@@ -4,6 +4,7 @@
   justify-content: space-around;
   padding: 5px 0;
   width: 100vw;
+  height: 10vh;
 
   & * {
     cursor: pointer;
@@ -39,15 +40,11 @@
     font-family: 'Righteous', cursive;
     gap: 30px;
 
-    & .navbar-login {
-    }
-
     & .navbar-signup {
       padding: 9px 13px;
       color: white;
       background-color: var(--mainColor);
       border-radius: 7px;
-
     }
   }
 }

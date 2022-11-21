@@ -1,0 +1,45 @@
+.home-footer-container {
+  width: 100vw;
+  height: 10vh;
+  background-color: var(--mainColor);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  user-select: none;
+
+  & .copyrights {
+    color: white;
+    font-family: Roboto, sans-serif;
+  }
+
+  & .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Righteous', cursive;
+    color: white;
+    font-size: larger;
+  }
+
+  & .auth_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Righteous', cursive;
+    gap: 30px;
+
+    & span {
+      cursor: pointer;
+      color: white;
+    }
+
+    & div {
+      cursor: pointer;
+      padding: 9px 13px;
+      color: var(--mainColor);
+      background-color: white;
+      border-radius: 7px;
+    }
+  }
+}

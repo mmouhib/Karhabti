@@ -13,7 +13,6 @@ export default function Navbar() {
 				<span className="navbar-item">Explore</span>
 				<span className="navbar-item">Download</span>
 			</nav>
-
 			<div className="auth_section">
 				<span className="navbar-login">Log In</span>
 				<div className="navbar-signup">Register</div>
