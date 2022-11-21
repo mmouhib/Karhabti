@@ -1,6 +1,6 @@
 import './homeContent.scss';
 // @ts-ignore
-import Image from '../../assets/homeCar.png';
+import Image from '../../../assets/homeCar.png';
 
 export default function HomeContent() {
 	return (

@@ -1,0 +1,33 @@
+.home-features-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+
+  & .features-title {
+    font-family: 'Righteous', cursive;
+    text-align: center;
+
+    & span {
+      text-transform: uppercase;
+      color: var(--mainColor);
+    }
+
+    & p {
+      font-size: 2em;
+    }
+  }
+
+  & .features-content {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+  }
+}
