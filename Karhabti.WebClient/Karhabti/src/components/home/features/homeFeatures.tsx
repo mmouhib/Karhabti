@@ -1,7 +1,7 @@
 import './homeFeatures.scss';
 import features from '../../../static/features';
 import IHomeFeatures from '../../../types/types';
-import HomeFeaturesCard from '../home-features-card/homeFeaturesCard';
+import HomeFeaturesCard from '../features-card/homeFeaturesCard';
 
 export default function HomeFeatures() {
 	return (

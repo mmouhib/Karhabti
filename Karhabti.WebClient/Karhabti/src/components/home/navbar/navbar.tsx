@@ -1,12 +1,11 @@
 import './navbar.scss';
-import CarRentalIcon from '@mui/icons-material/CarRental';
+import Logo from '../../_global/logo';
 
 export default function Navbar() {
 	return (
 		<div className="navbar-container">
 			<div className="nav-logo">
-				<CarRentalIcon />
-				<p>Karhabti</p>
+				<Logo />
 			</div>
 			<nav className="nav-links">
 				<span className="navbar-item">About Us</span>

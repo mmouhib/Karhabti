@@ -1,6 +1,6 @@
-import HomeContent from '../components/home/home-content/homeContent';
-import HomeFeatures from '../components/home/home-features/homeFeatures';
-import HomeFooter from '../components/home/home-footer/homeFooter';
+import HomeContent from '../components/home/content/homeContent';
+import HomeFeatures from '../components/home/features/homeFeatures';
+import HomeFooter from '../components/home/footer/homeFooter';
 
 export default function Home() {
 	return (
