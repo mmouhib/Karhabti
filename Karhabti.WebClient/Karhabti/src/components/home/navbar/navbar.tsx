@@ -1,12 +1,10 @@
 import './navbar.scss';
-import Logo from '../../_global/logo';
+import Logo from '../../_global/logo/logo';
 
 export default function Navbar() {
 	return (
 		<div className="navbar-container">
-			<div className="nav-logo">
-				<Logo />
-			</div>
+			<Logo />
 			<nav className="nav-links">
 				<span className="navbar-item">About Us</span>
 				<span className="navbar-item">Explore</span>

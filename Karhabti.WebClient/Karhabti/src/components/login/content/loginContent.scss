@@ -1,4 +1,116 @@
 .login-content-container {
   width: 35%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 20px;
+  gap: 60px;
+  overflow: scroll;
+
+
+  & .top-section {
+    align-self: start;
+  }
+
+  & .content-section {
+    height: 95%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5vh;
+  }
+
+  & img {
+    width: 200px;
+    align-self: center;
+  }
+
+  & .login-text {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 1vh;
+
+    & h2 {
+      font-family: 'Righteous', cursive;
+      font-weight: 500;
+    }
+
+    & p {
+      color: #7d7d7d;
+      font-family: Roboto, sans-serif;
+    }
+  }
+
+  & .form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 5vh;
+
+    & .input-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2vh;
+    }
+
+    & .input-box {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      & label {
+        color: #7d7d7d;
+        font-family: roboto, sans-serif;
+        text-transform: capitalize;
+      }
+    }
+
+    & .additions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 20px;
+      font-family: Roboto, sans-serif;
+
+      & .remember-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        color: #616161;
+      }
+
+      & span {
+        color: #FE6B6B;
+        font-weight: 600;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+
+    & .create-account {
+      color: #4B4B4B;
+      font-family: Roboto, sans-serif;
+
+      & span {
+        font-weight: bold;
+        color: #FE6B6B;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+  }
 }

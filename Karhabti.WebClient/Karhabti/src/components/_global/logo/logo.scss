@@ -1,0 +1,10 @@
+.logo-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Righteous', cursive;
+	color: var(--mainColor);
+	font-size: larger;
+	user-select: none;
+	cursor: pointer;
+}
