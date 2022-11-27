@@ -1,0 +1,24 @@
+.signup-banner-container {
+  width: 35%;
+  background-color: #F8C0C0;
+  height: 100%;
+  border-radius: 15px;
+  font-family: Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+
+  & h2 {
+    font-size: 2em;
+  }
+
+  & p {
+    color: #727272;
+    font-size: 1.2em;
+  }
+
+  & img {
+    width: 80%;
+  }
+}
