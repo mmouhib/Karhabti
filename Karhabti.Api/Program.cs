@@ -8,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.AddCors(p =>
+    p.AddPolicy("corspolicy",
+        build => { build.WithOrigins("http://localhost:5173").AllowAnyMethod().AllowAnyHeader(); }));
+
 // var ConnString = builder.Configuration["KarhabtiConnection"];
 var ConnString =
     "Server=localhost;Database=KarhabtiDB;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
@@ -31,6 +35,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors("corspolicy");
 
 app.UseHttpsRedirection();
 
