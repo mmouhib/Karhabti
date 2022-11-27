@@ -3,8 +3,40 @@ import Logo from '../../_global/logo/logo';
 import CustomInput from '../../_global/input/input';
 import CustomDropdown from '../../_global/dropdown/dropdown';
 import FormButton from '../../_global/formButton/formButton';
+import { useState, useEffect } from 'react';
+import { addUser } from '../../../utils/api';
 
 export default function SignupContent() {
+	const [username, setUsername] = useState<string>('');
+	const [firstName, setFirstName] = useState<string>('');
+	const [lastName, setLastName] = useState<string>('');
+	const [email, setEmail] = useState<string>('');
+	const [gender, setGender] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [confirmPassword, setconfirmPassword] = useState<string>('');
+	const [day, setDay] = useState<string>();
+	const [month, setMonth] = useState<string>();
+	const [year, setYear] = useState<string>();
+
+	function sublitHandler() {
+		addUser({
+			username: username,
+			firstName: firstName,
+			lastName: lastName,
+			email: email,
+			password: password,
+			birthDate: '2019-01-06T17:16:40',
+		});
+	}
+
+	function dropdownContentLister(min: number, max: number): string[] {
+		let list: string[] = [];
+		for (let index = min; index < max; index++) {
+			list.push(index + '');
+		}
+		return list;
+	}
+
 	return (
 		<div className="signup-content-container">
 			<div className="logo-container">
@@ -17,53 +49,65 @@ export default function SignupContent() {
 					<CustomInput
 						label="First Name"
 						width="50%"
-						placeholder="enter your name"
+						placeholder="Enter your first name"
 						type="text"
-						value=""
-						setValue={() => {}}
+						value={firstName}
+						setValue={setFirstName}
 					/>
 					<CustomInput
 						label="Last Name"
 						width="50%"
-						placeholder="enter your name"
+						placeholder="Enter your last name"
 						type="text"
-						value=""
-						setValue={() => {}}
+						value={lastName}
+						setValue={setLastName}
+					/>
+				</div>
+
+				<div className="input-container">
+					<CustomInput
+						label="Username"
+						width="65%"
+						placeholder="Enter your username"
+						type="text"
+						value={username}
+						setValue={setUsername}
+					/>
+					<CustomDropdown
+						width="35%"
+						label="Gender"
+						list={['male', 'female']}
+						setValue={setGender}
 					/>
 				</div>
 
 				<div className="input-container">
 					<CustomInput
 						label="Email"
-						width="65%"
-						placeholder="enter your email"
+						width="100%"
+						placeholder="Enter your email"
 						type="email"
-						value=""
-						setValue={() => {}}
-					/>
-					<CustomDropdown
-						width="35%"
-						label="Gender"
-						list={['male', 'female']}
+						value={email}
+						setValue={setEmail}
 					/>
 				</div>
 
 				<div className="input-container">
 					<CustomInput
-						label="First Name"
+						label="Password"
 						width="50%"
-						placeholder="enter your name"
+						placeholder="Enter your password"
 						type="text"
-						value=""
-						setValue={() => {}}
+						value={password}
+						setValue={setPassword}
 					/>
 					<CustomInput
-						label="First Name"
+						label="Confirm"
 						width="50%"
-						placeholder="enter your name"
+						placeholder="Confirm your password"
 						type="text"
-						value=""
-						setValue={() => {}}
+						value={confirmPassword}
+						setValue={setconfirmPassword}
 					/>
 				</div>
 
@@ -71,22 +115,25 @@ export default function SignupContent() {
 					<CustomDropdown
 						width="32%"
 						label="day"
-						list={['male', 'female']}
+						list={dropdownContentLister(1, 32)}
+						setValue={setDay}
 					/>
 					<CustomDropdown
 						width="32%"
 						label="month"
-						list={['male', 'female']}
+						list={dropdownContentLister(1, 13)}
+						setValue={setMonth}
 					/>
 					<CustomDropdown
 						width="36%"
 						label="year"
-						list={['male', 'female']}
+						list={dropdownContentLister(1920, 2015)}
+						setValue={setYear}
 					/>
 				</div>
 
 				<div className="button-container">
-					<FormButton width="60%" text="sign up" />
+					<FormButton width="60%" text="sign up" onClick={sublitHandler} />
 					<div className="clear-button">Clear</div>
 				</div>
 

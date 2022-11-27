@@ -8,7 +8,7 @@ export default function LoginBanner() {
 			<div className="text">
 				<h1>Welcome Back !</h1>
 				<p>
-					Welcome back! We’re Happy to see you again. Please fill in your
+					Welcome back! We're Happy to see you again. Please fill in your
 					credentials.
 				</p>
 			</div>

@@ -1,9 +1,10 @@
 import './dropdown.scss';
 
 interface IDropdownProps {
+	width: string;
 	label: string;
 	list: string[];
-	width: string;
+	setValue: (arg: string) => void;
 }
 
 export default function CustomDropdown(props: IDropdownProps) {
@@ -14,10 +15,20 @@ export default function CustomDropdown(props: IDropdownProps) {
 					<p>{props.label}</p>
 				</div>
 			)}
-			<select name="select" id="select">
+			<select
+				name="select"
+				id="select"
+				onChange={(e) => {
+					props.setValue(e.target.value);
+				}}
+			>
 				<option value="0">select</option>
-				{props.list.map((element: string) => {
-					return <option value={element}>{element}</option>;
+				{props.list.map((element: string, index: number) => {
+					return (
+						<option key={index} value={element}>
+							{element}
+						</option>
+					);
 				})}
 			</select>
 		</div>

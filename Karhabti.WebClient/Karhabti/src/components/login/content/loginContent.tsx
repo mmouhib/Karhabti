@@ -45,7 +45,7 @@ export default function LoginContent() {
 
 						<span>Reset Password</span>
 					</div>
-					<FormButton width="50%" text="Log In" />
+					<FormButton width="50%" text="Log In" onClick={() => {}} />
 
 					<p className="create-account">
 						Don't have an account ? <span>Create One</span>

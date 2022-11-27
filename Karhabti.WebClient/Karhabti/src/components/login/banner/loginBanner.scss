@@ -1,31 +1,29 @@
 .login-banner-container {
-  width: 65%;
-  height: 100%;
-  background-color: var(--authAccentColor);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 50px;
-  overflow: scroll;
+	width: 65%;
+	height: 100%;
+	background-color: var(--authAccentColor);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	padding: 50px;
 
+	& .text {
+		font-family: Roboto, sans-serif;
+		padding-top: 13vh;
 
-  & .text {
-    font-family: Roboto, sans-serif;
-    padding-top: 13vh;
+		& h1 {
+			font-size: 3em;
+		}
 
-    & h1 {
-      font-size: 3em;
-    }
+		& p {
+			color: #717171;
+			font-size: 1.3em;
+			width: 70%;
+		}
+	}
 
-    & p {
-      color: #717171;
-      font-size: 1.3em;
-      width: 70%;
-    }
-  }
-
-  & img {
-    width: 80%;
-  }
+	& img {
+		width: 80%;
+	}
 }

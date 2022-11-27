@@ -10,11 +10,11 @@ export default function HomeContent() {
 			<div className="home-content">
 				<div className="left-side">
 					<p className="slogan">
-						Your car’s <span>Maintenance </span>
+						Your cars <span>Maintenance </span>
 						is our <span>Mission</span>.
 					</p>
 					<p className="content">
-						We help you keep track of your car’s state and help you
+						We help you keep track of your car's state and help you
 						maintain it with ease at no cost.
 					</p>
 					<div className="links">

@@ -22,6 +22,10 @@ export default function CustomInput(props: ICustomInputProps) {
 				</div>
 			)}
 			<input
+				value={props.value}
+				onChange={(e) => {
+					props.setValue(e.target.value);
+				}}
 				className="custom-input"
 				type={props.type}
 				placeholder={props.placeholder}
