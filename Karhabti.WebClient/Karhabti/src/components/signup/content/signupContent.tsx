@@ -29,6 +29,19 @@ export default function SignupContent() {
 		});
 	}
 
+	function clearFields(): void {
+		setUsername('');
+		setFirstName('');
+		setLastName('');
+		setEmail('');
+		setGender('');
+		setPassword('');
+		setconfirmPassword('');
+		setDay('');
+		setMonth('');
+		setYear('');
+	}
+
 	function dropdownContentLister(min: number, max: number): string[] {
 		let list: string[] = [];
 		for (let index = min; index < max; index++) {
@@ -134,7 +147,14 @@ export default function SignupContent() {
 
 				<div className="button-container">
 					<FormButton width="60%" text="sign up" onClick={sublitHandler} />
-					<div className="clear-button">Clear</div>
+					<div
+						className="clear-button"
+						onClick={() => {
+							clearFields();
+						}}
+					>
+						Clear
+					</div>
 				</div>
 
 				<div className="bottom-section">
