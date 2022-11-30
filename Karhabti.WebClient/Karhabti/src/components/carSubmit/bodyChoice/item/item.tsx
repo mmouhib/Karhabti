@@ -5,20 +5,23 @@ interface IItemProps {
 	image: any;
 	selected: boolean[];
 	setSelected: (arg: boolean[]) => void;
+	imageDescription: string;
 }
 
 export default function Item(props: IItemProps) {
 	const whenItemIsSelected: React.CSSProperties = {
 		backgroundColor: '#ffefef',
+		border: '3px solid rgb(212, 83, 83)',
 	};
 
-	const whenItemIsNoSelected = {};
+	const whenItemIsNoSelected = {
+		border: '2px solid rgb(165, 165, 165)',
+	};
 
 	const _onClick = (): void => {
 		props.setSelected(
-			props.selected.map((element: boolean, index: number) => {
-				if (index == props.id) return true;
-				return false;
+			props.selected.map((_, index: number) => {
+				return index == props.id;
 			})
 		);
 	};
@@ -32,6 +35,7 @@ export default function Item(props: IItemProps) {
 			}
 		>
 			<img src={props.image} alt={props.image.toString()} />
+			<p>{props.imageDescription}</p>
 		</div>
 	);
 }

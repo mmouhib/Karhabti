@@ -25,5 +25,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-	return <RouterProvider router={router} />;
+	return (
+		<div style={{ width: '100vw', height: '100vh' }}>
+			<RouterProvider router={router} />
+		</div>
+	);
 }
