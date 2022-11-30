@@ -6,19 +6,26 @@ interface IItemProps {
 	selected: boolean[];
 	setSelected: (arg: boolean[]) => void;
 	imageDescription: string;
+	openModal: () => void;
+	setCarBodyValue: (arg: string) => void;
 }
 
+const whenItemIsSelected: React.CSSProperties = {
+	backgroundColor: '#ffefef',
+	border: '3px solid #e55353',
+};
+
+const whenItemIsNoSelected: React.CSSProperties = {
+	border: '2px solid rgb(165, 165, 165)',
+};
+
 export default function Item(props: IItemProps) {
-	const whenItemIsSelected: React.CSSProperties = {
-		backgroundColor: '#ffefef',
-		border: '3px solid rgb(212, 83, 83)',
-	};
-
-	const whenItemIsNoSelected = {
-		border: '2px solid rgb(165, 165, 165)',
-	};
-
 	const _onClick = (): void => {
+		if (props.id == props.selected.length - 1) props.openModal();
+		else {
+			props.setCarBodyValue(props.imageDescription);
+		}
+
 		props.setSelected(
 			props.selected.map((_, index: number) => {
 				return index == props.id;
@@ -34,7 +41,7 @@ export default function Item(props: IItemProps) {
 				props.selected[props.id] ? whenItemIsSelected : whenItemIsNoSelected
 			}
 		>
-			<img src={props.image} alt={props.image.toString()} />
+			{props.image && <img src={props.image} alt={props.image.toString()} />}
 			<p>{props.imageDescription}</p>
 		</div>
 	);

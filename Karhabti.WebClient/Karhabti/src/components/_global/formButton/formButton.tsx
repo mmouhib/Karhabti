@@ -1,4 +1,5 @@
 import './formButton.scss';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 
 interface IFormButtonProps {
 	width: string;
@@ -14,6 +15,7 @@ export default function FormButton(props: IFormButtonProps) {
 			onClick={props.onClick}
 		>
 			{props.text}
+			<AiOutlineArrowRight />
 		</div>
 	);
 }
