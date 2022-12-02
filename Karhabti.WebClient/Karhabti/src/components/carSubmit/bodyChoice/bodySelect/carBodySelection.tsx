@@ -11,6 +11,12 @@ import { useState } from 'react';
 import FormButton from '../../../_global/formButton/formButton';
 import CustomModal from '../../../_global/modal/modal';
 
+interface ICarBodySelectonProps {
+	setCurrentComponent: (arg: boolean) => void;
+	carBodyType: string;
+	setCarBodyType: (arg: string) => void;
+}
+
 interface IItem {
 	image?: any;
 	description: string;
@@ -27,17 +33,11 @@ const imageList: IItem[] = [
 	{ description: 'Other' },
 ];
 
-export default function CarBodySelecton() {
+export default function CarBodySelecton(props: ICarBodySelectonProps) {
 	const [modalState, setModalState] = useState<boolean>(false);
-	const [carBodyType, setCarBodyType] = useState<string>('');
-
 	const [selectionList, setSelectionList] = useState<boolean[]>(
 		new Array(imageList.length).fill(false)
 	);
-
-	const openModal = (): void => {
-		setModalState(true);
-	};
 
 	return (
 		<div className="car-body-container">
@@ -45,8 +45,8 @@ export default function CarBodySelecton() {
 				modalTitle="Car body type:"
 				modalState={modalState}
 				setModalState={setModalState}
-				data={carBodyType}
-				setData={setCarBodyType}
+				data={props.carBodyType}
+				setData={props.setCarBodyType}
 				carBodyList={selectionList}
 				carBodyResetter={setSelectionList}
 			/>
@@ -56,10 +56,10 @@ export default function CarBodySelecton() {
 					{imageList.map((element: IItem, index: number) => {
 						return (
 							<Item
-								setCarBodyValue={(arg: string) => {
-									setCarBodyType(arg);
+								setCarBodyValue={props.setCarBodyType}
+								openModal={() => {
+									setModalState(true);
 								}}
-								openModal={openModal}
 								id={index}
 								key={index}
 								image={element.image}
@@ -71,7 +71,13 @@ export default function CarBodySelecton() {
 					})}
 				</div>
 				<div className="button-section">
-					<FormButton width="20%" text="proceed" onClick={() => {}} />
+					<FormButton
+						width="20%"
+						text="proceed"
+						onClick={() => {
+							props.setCurrentComponent(false);
+						}}
+					/>
 				</div>
 			</div>
 		</div>
