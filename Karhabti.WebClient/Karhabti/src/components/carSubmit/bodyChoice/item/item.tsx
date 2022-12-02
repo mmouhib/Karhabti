@@ -1,3 +1,4 @@
+import { ICarSubmitForm } from '../../../../pages/carSubmit/carSubmit';
 import './item.scss';
 
 interface IItemProps {
@@ -6,8 +7,9 @@ interface IItemProps {
 	selected: boolean[];
 	setSelected: (arg: boolean[]) => void;
 	imageDescription: string;
-	openModal: () => void;
-	setCarBodyValue: (arg: string) => void;
+	setModalState: (arg: boolean) => void;
+	CarData: ICarSubmitForm;
+	setCarBodyValue: (arg: ICarSubmitForm) => void;
 }
 
 const whenItemIsSelected: React.CSSProperties = {
@@ -21,9 +23,12 @@ const whenItemIsNoSelected: React.CSSProperties = {
 
 export default function Item(props: IItemProps) {
 	const _onClick = (): void => {
-		if (props.id == props.selected.length - 1) props.openModal();
+		if (props.id == props.selected.length - 1) props.setModalState(true);
 		else {
-			props.setCarBodyValue(props.imageDescription);
+			props.setCarBodyValue({
+				...props.CarData,
+				BodyType: props.imageDescription,
+			});
 		}
 
 		props.setSelected(
@@ -41,7 +46,7 @@ export default function Item(props: IItemProps) {
 				props.selected[props.id] ? whenItemIsSelected : whenItemIsNoSelected
 			}
 		>
-			{props.image && <img src={props.image} alt={props.image.toString()} />}
+			{props.image && <img src={props.image} alt={props.imageDescription} />}
 			<p>{props.imageDescription}</p>
 		</div>
 	);

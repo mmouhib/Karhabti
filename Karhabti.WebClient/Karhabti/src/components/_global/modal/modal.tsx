@@ -9,13 +9,14 @@ import {
 	Button,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import { ICarSubmitForm } from '../../../pages/carSubmit/carSubmit';
 import CustomInput from '../input/input';
 
 interface IModalProps {
 	modalState: boolean;
 	setModalState: (arg: boolean) => void;
-	data: string;
-	setData: (arg: string) => void;
+	data: ICarSubmitForm;
+	setData: (arg: ICarSubmitForm) => void;
 	modalTitle: string;
 	carBodyList: boolean[];
 	carBodyResetter: (arg: boolean[]) => void;
@@ -28,23 +29,23 @@ const flexStyle: React.CSSProperties = {
 };
 
 export default function CustomModal(props: IModalProps) {
-	const [inputValue, setInputValue] = useState<string>(props.data);
+	const [inputValue, setInputValue] = useState<string>(props.data.BodyType);
 
 	const closeModal = (): void => {
-		if (inputValue.length < 0) {
+		if (props.data.BodyType.length > 0) {
 			props.carBodyResetter(
 				props.carBodyList.map(() => {
 					return false;
 				})
 			);
 		}
-		setInputValue(props.data);
+		setInputValue(props.data.BodyType);
 		props.setModalState(false);
 	};
 
 	const onModalSaveClose = (): void => {
-		if (inputValue.length > 0) {
-			props.setData(inputValue);
+		if (props.data.BodyType.length > 0) {
+			props.setData({ ...props.data, BodyType: inputValue });
 		} else {
 			props.carBodyResetter(
 				props.carBodyList.map(() => {
@@ -52,7 +53,7 @@ export default function CustomModal(props: IModalProps) {
 				})
 			);
 		}
-		setInputValue(props.data);
+		setInputValue(props.data.BodyType);
 		props.setModalState(false);
 	};
 

@@ -10,11 +10,12 @@ import Item from '../item/item';
 import { useState } from 'react';
 import FormButton from '../../../_global/formButton/formButton';
 import CustomModal from '../../../_global/modal/modal';
+import { ICarSubmitForm } from '../../../../pages/carSubmit/carSubmit';
 
 interface ICarBodySelectonProps {
 	setCurrentComponent: (arg: boolean) => void;
-	carBodyType: string;
-	setCarBodyType: (arg: string) => void;
+	CarData: ICarSubmitForm;
+	setCarData: (arg: ICarSubmitForm) => void;
 }
 
 interface IItem {
@@ -45,8 +46,8 @@ export default function CarBodySelecton(props: ICarBodySelectonProps) {
 				modalTitle="Car body type:"
 				modalState={modalState}
 				setModalState={setModalState}
-				data={props.carBodyType}
-				setData={props.setCarBodyType}
+				data={props.CarData}
+				setData={props.setCarData}
 				carBodyList={selectionList}
 				carBodyResetter={setSelectionList}
 			/>
@@ -56,10 +57,9 @@ export default function CarBodySelecton(props: ICarBodySelectonProps) {
 					{imageList.map((element: IItem, index: number) => {
 						return (
 							<Item
-								setCarBodyValue={props.setCarBodyType}
-								openModal={() => {
-									setModalState(true);
-								}}
+								CarData={props.CarData}
+								setCarBodyValue={props.setCarData}
+								setModalState={setModalState}
 								id={index}
 								key={index}
 								image={element.image}

@@ -4,15 +4,6 @@ interface ICarBodySelectonProps {
 	setCurrentComponent: (arg: boolean) => void;
 }
 
-/*
-Model
-Power
-Year
-color
-EngineSize
-GasType
-*/
-
 export default function CarSubmitForm(props: ICarBodySelectonProps) {
 	return (
 		<div className="car-submit-form-container">
