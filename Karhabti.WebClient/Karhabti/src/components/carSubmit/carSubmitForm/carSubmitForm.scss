@@ -1,2 +1,40 @@
 .car-submit-form-container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-left: 1vw;
+
+	& .left {
+		border-radius: 10px;
+		height: 97%;
+		width: 35%;
+		background-color: #ffbbbb;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		flex-direction: column;
+
+		& .text {
+			padding: 0 2vw;
+			width: 100%;
+			& h1 {
+				font-size: 2em;
+				font-family: 'Righteous', sans-serif;
+				align-self: flex-start;
+			}
+
+			& p {
+				font-size: 1.5em;
+				font-family: 'Roboto', sans-serif;
+				align-self: flex-start;
+			}
+		}
+	}
+
+	& .right {
+		height: 100%;
+		width: 65%;
+	}
 }
