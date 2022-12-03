@@ -1,5 +1,6 @@
-import { ICarSubmitForm } from '../../../../pages/carSubmit/carSubmit';
+import React from 'react';
 import './item.scss';
+import { ICarSubmitData } from '../../../../types/types';
 
 interface IItemProps {
 	id: number;
@@ -8,16 +9,16 @@ interface IItemProps {
 	setSelected: (arg: boolean[]) => void;
 	imageDescription: string;
 	setModalState: (arg: boolean) => void;
-	CarData: ICarSubmitForm;
-	setCarBodyValue: (arg: ICarSubmitForm) => void;
+	CarData: ICarSubmitData;
+	setCarBodyValue: (arg: ICarSubmitData) => void;
 }
 
-const whenItemIsSelected: React.CSSProperties = {
+const itemIsSelected: React.CSSProperties = {
 	backgroundColor: '#ffefef',
 	border: '3px solid #e55353',
 };
 
-const whenItemIsNoSelected: React.CSSProperties = {
+const itemIsNotSelected: React.CSSProperties = {
 	border: '2px solid rgb(165, 165, 165)',
 };
 
@@ -42,9 +43,7 @@ export default function Item(props: IItemProps) {
 		<div
 			className="item-container"
 			onClick={_onClick}
-			style={
-				props.selected[props.id] ? whenItemIsSelected : whenItemIsNoSelected
-			}
+			style={props.selected[props.id] ? itemIsSelected : itemIsNotSelected}
 		>
 			{props.image && <img src={props.image} alt={props.imageDescription} />}
 			<p>{props.imageDescription}</p>

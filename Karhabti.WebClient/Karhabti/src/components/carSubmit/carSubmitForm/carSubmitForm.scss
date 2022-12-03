@@ -19,6 +19,7 @@
 		& .text {
 			padding: 0 2vw;
 			width: 100%;
+
 			& h1 {
 				font-size: 2em;
 				font-family: 'Righteous', sans-serif;
@@ -36,5 +37,21 @@
 	& .right {
 		height: 100%;
 		width: 65%;
+
+		& .form-container {
+			width: 70%;
+		}
+
+		& .slider-container {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 3%;
+
+			& .power {
+				font-family: 'righteous', 'roboto', sans-serif;
+			}
+		}
 	}
 }

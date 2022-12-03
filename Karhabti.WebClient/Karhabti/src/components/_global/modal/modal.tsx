@@ -8,18 +8,19 @@ import {
 	ModalCloseButton,
 	Button,
 } from '@chakra-ui/react';
-import { useState } from 'react';
-import { ICarSubmitForm } from '../../../pages/carSubmit/carSubmit';
+import React, { useState } from 'react';
+import { ICarSubmitData } from "../../../types/types";
+
 import CustomInput from '../input/input';
 
 interface IModalProps {
 	modalState: boolean;
 	setModalState: (arg: boolean) => void;
-	data: ICarSubmitForm;
-	setData: (arg: ICarSubmitForm) => void;
+	data: ICarSubmitData;
+	setData: (arg: ICarSubmitData) => void;
 	modalTitle: string;
 	carBodyList: boolean[];
-	carBodyResetter: (arg: boolean[]) => void;
+	carBodySetter: (arg: boolean[]) => void;
 }
 
 const flexStyle: React.CSSProperties = {
@@ -33,7 +34,7 @@ export default function CustomModal(props: IModalProps) {
 
 	const closeModal = (): void => {
 		if (props.data.BodyType.length > 0) {
-			props.carBodyResetter(
+			props.carBodySetter(
 				props.carBodyList.map(() => {
 					return false;
 				})
@@ -47,7 +48,7 @@ export default function CustomModal(props: IModalProps) {
 		if (props.data.BodyType.length > 0) {
 			props.setData({ ...props.data, BodyType: inputValue });
 		} else {
-			props.carBodyResetter(
+			props.carBodySetter(
 				props.carBodyList.map(() => {
 					return false;
 				})

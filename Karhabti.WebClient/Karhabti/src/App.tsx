@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 		element: <Signup />,
 	},
 	{
-		path: '/addcar',
+		path: '/add-car',
 		element: <CarSubmit />,
 	},
 ]);

@@ -1,4 +1,11 @@
 import './carBodySelection.scss';
+import Item from '../item/item';
+import { useState } from 'react';
+import FormButton from '../../../_global/formButton/formButton';
+import CustomModal from '../../../_global/modal/modal';
+import { ICarSubmitData } from '../../../../types/types';
+
+//images import
 import Coupe from '../../../../assets/carBodyType/coupe.png';
 import Pickup from '../../../../assets/carBodyType/pickup.png';
 import Hatchback from '../../../../assets/carBodyType/hatchback.png';
@@ -6,16 +13,11 @@ import Roadster from '../../../../assets/carBodyType/roadster.png';
 import Sedan from '../../../../assets/carBodyType/sedan.png';
 import Suv from '../../../../assets/carBodyType/suv.png';
 import Wagon from '../../../../assets/carBodyType/wagon.png';
-import Item from '../item/item';
-import { useState } from 'react';
-import FormButton from '../../../_global/formButton/formButton';
-import CustomModal from '../../../_global/modal/modal';
-import { ICarSubmitForm } from '../../../../pages/carSubmit/carSubmit';
 
-interface ICarBodySelectonProps {
+interface ICarBodySelectionProps {
 	setCurrentComponent: (arg: boolean) => void;
-	CarData: ICarSubmitForm;
-	setCarData: (arg: ICarSubmitForm) => void;
+	CarData: ICarSubmitData;
+	setCarData: (arg: ICarSubmitData) => void;
 }
 
 interface IItem {
@@ -34,7 +36,7 @@ const imageList: IItem[] = [
 	{ description: 'Other' },
 ];
 
-export default function CarBodySelecton(props: ICarBodySelectonProps) {
+export default function CarBodySelection(props: ICarBodySelectionProps) {
 	const [modalState, setModalState] = useState<boolean>(false);
 	const [selectionList, setSelectionList] = useState<boolean[]>(
 		new Array(imageList.length).fill(false)
@@ -49,7 +51,7 @@ export default function CarBodySelecton(props: ICarBodySelectonProps) {
 				data={props.CarData}
 				setData={props.setCarData}
 				carBodyList={selectionList}
-				carBodyResetter={setSelectionList}
+				carBodySetter={setSelectionList}
 			/>
 			<div className="car-body-content">
 				<h1>Choose your car's body type</h1>
