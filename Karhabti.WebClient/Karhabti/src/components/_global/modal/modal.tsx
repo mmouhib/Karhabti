@@ -8,54 +8,40 @@ import {
 	ModalCloseButton,
 	Button,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { ICarSubmitData } from "../../../types/types";
-
+import React, { useContext, useState } from 'react';
 import CustomInput from '../input/input';
+import { CarDataContext, IContext } from '../../../context/carDataContext';
 
 interface IModalProps {
 	modalState: boolean;
 	setModalState: (arg: boolean) => void;
-	data: ICarSubmitData;
-	setData: (arg: ICarSubmitData) => void;
 	modalTitle: string;
 	carBodyList: boolean[];
 	carBodySetter: (arg: boolean[]) => void;
 }
 
-const flexStyle: React.CSSProperties = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-};
-
 export default function CustomModal(props: IModalProps) {
-	const [inputValue, setInputValue] = useState<string>(props.data.BodyType);
+	const carContext: IContext = useContext(CarDataContext);
+
+	const [inputValue, setInputValue] = useState<string>('');
 
 	const closeModal = (): void => {
-		if (props.data.BodyType.length > 0) {
-			props.carBodySetter(
-				props.carBodyList.map(() => {
-					return false;
-				})
-			);
-		}
-		setInputValue(props.data.BodyType);
 		props.setModalState(false);
+		setInputValue('');
 	};
 
 	const onModalSaveClose = (): void => {
-		if (props.data.BodyType.length > 0) {
-			props.setData({ ...props.data, BodyType: inputValue });
-		} else {
+		if (inputValue.length == 0) {
+			props.setModalState(false);
 			props.carBodySetter(
 				props.carBodyList.map(() => {
 					return false;
 				})
 			);
+		} else {
+			carContext.setCarData({ ...carContext.carData, BodyType: inputValue });
 		}
-		setInputValue(props.data.BodyType);
-		props.setModalState(false);
+		closeModal();
 	};
 
 	return (
@@ -64,7 +50,7 @@ export default function CustomModal(props: IModalProps) {
 			<ModalContent>
 				<ModalHeader>{props.modalTitle}</ModalHeader>
 				<ModalCloseButton />
-				<ModalBody style={flexStyle}>
+				<ModalBody display="flex" justifyContent="center">
 					<CustomInput
 						width="90%"
 						placeholder="Enter your car's body type"

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './item.scss';
-import { ICarSubmitData } from '../../../../types/types';
+import { CarDataContext, IContext } from '../../../../context/carDataContext';
 
 interface IItemProps {
 	id: number;
@@ -9,8 +9,6 @@ interface IItemProps {
 	setSelected: (arg: boolean[]) => void;
 	imageDescription: string;
 	setModalState: (arg: boolean) => void;
-	CarData: ICarSubmitData;
-	setCarBodyValue: (arg: ICarSubmitData) => void;
 }
 
 const itemIsSelected: React.CSSProperties = {
@@ -23,11 +21,15 @@ const itemIsNotSelected: React.CSSProperties = {
 };
 
 export default function Item(props: IItemProps) {
+	const carContext: IContext = useContext(CarDataContext);
+
 	const _onClick = (): void => {
+		// in case the last item is selected which is the "Other" box
 		if (props.id == props.selected.length - 1) props.setModalState(true);
+		// in case on of the body types boxes is selected
 		else {
-			props.setCarBodyValue({
-				...props.CarData,
+			carContext.setCarData({
+				...carContext.carData,
 				BodyType: props.imageDescription,
 			});
 		}

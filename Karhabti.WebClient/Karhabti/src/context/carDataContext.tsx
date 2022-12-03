@@ -10,7 +10,7 @@ interface IProviderProps {
 	children: React.ReactNode;
 }
 
-export const CarDataContext = createContext<IContext | null>(null);
+export const CarDataContext = createContext<IContext>({} as IContext);
 
 export default function CarDataContextProvider(props: IProviderProps) {
 	const [carData, setCarData] = useState<ICarSubmitData>({

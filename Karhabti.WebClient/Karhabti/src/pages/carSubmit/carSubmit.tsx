@@ -24,8 +24,6 @@ export default function CarSubmit() {
 			<CarDataContextProvider>
 				{isOnCarBodySelectionPage ? (
 					<CarBodySelection
-						CarData={CarData}
-						setCarData={setCarData}
 						setCurrentComponent={setIsOnCarBodySelectionPage}
 					/>
 				) : (
