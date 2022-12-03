@@ -3,8 +3,16 @@ import Logo from '../../_global/logo/logo';
 import CustomInput from '../../_global/input/input';
 import CustomDropdown from '../../_global/dropdown/dropdown';
 import FormButton from '../../_global/formButton/formButton';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { addUser } from '../../../utils/api';
+
+export function dropdownContentLister(min: number, max: number): string[] {
+	let list: string[] = [];
+	for (let index = min; index < max; index++) {
+		list.push(index + '');
+	}
+	return list;
+}
 
 export default function SignupContent() {
 	const [username, setUsername] = useState<string>('');
@@ -13,12 +21,12 @@ export default function SignupContent() {
 	const [email, setEmail] = useState<string>('');
 	const [gender, setGender] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
-	const [confirmPassword, setconfirmPassword] = useState<string>('');
+	const [confirmPassword, setConfirmPassword] = useState<string>('');
 	const [day, setDay] = useState<string>();
 	const [month, setMonth] = useState<string>();
 	const [year, setYear] = useState<string>();
 
-	function sublitHandler() {
+	function submitHandler() {
 		addUser({
 			username: username,
 			firstName: firstName,
@@ -36,18 +44,10 @@ export default function SignupContent() {
 		setEmail('');
 		setGender('');
 		setPassword('');
-		setconfirmPassword('');
+		setConfirmPassword('');
 		setDay('');
 		setMonth('');
 		setYear('');
-	}
-
-	function dropdownContentLister(min: number, max: number): string[] {
-		let list: string[] = [];
-		for (let index = min; index < max; index++) {
-			list.push(index + '');
-		}
-		return list;
 	}
 
 	return (
@@ -120,7 +120,7 @@ export default function SignupContent() {
 						placeholder="Confirm your password"
 						type="text"
 						value={confirmPassword}
-						setValue={setconfirmPassword}
+						setValue={setConfirmPassword}
 					/>
 				</div>
 
@@ -146,7 +146,7 @@ export default function SignupContent() {
 				</div>
 
 				<div className="button-container">
-					<FormButton width="60%" text="sign up" onClick={sublitHandler} />
+					<FormButton width="60%" text="sign up" onClick={submitHandler} />
 					<div
 						className="clear-button"
 						onClick={() => {
