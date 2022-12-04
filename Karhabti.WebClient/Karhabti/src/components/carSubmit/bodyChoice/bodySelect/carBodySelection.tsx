@@ -13,7 +13,7 @@ import Suv from '../../../../assets/carBodyType/suv.png';
 import Wagon from '../../../../assets/carBodyType/wagon.png';
 
 interface ICarBodySelectionProps {
-	setCurrentComponent: (arg: boolean) => void;
+	changePage: (arg: boolean) => void;
 }
 
 interface IItem {
@@ -69,7 +69,7 @@ export default function CarBodySelection(props: ICarBodySelectionProps) {
 						width="20%"
 						text="proceed"
 						onClick={() => {
-							props.setCurrentComponent(false);
+							props.changePage(false);
 						}}
 					/>
 				</div>

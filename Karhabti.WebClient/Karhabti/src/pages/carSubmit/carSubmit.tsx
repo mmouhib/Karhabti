@@ -3,35 +3,20 @@ import CarBodySelection from '../../components/carSubmit/bodyChoice/bodySelect/c
 import { useState } from 'react';
 import CarSubmitForm from '../../components/carSubmit/carSubmitForm/carSubmitForm';
 import CarDataContextProvider from '../../context/carDataContext';
-import { ICarSubmitData } from '../../types/types';
 
 export default function CarSubmit() {
-	const [isOnCarBodySelectionPage, setIsOnCarBodySelectionPage] =
-		useState<boolean>(true);
-
-	const [CarData, setCarData] = useState<ICarSubmitData>({
-		Model: '',
-		Power: 0,
-		Year: 0,
-		Color: '',
-		EngineSize: 0,
-		GasType: 'diesel',
-		BodyType: '',
-	});
-
+	/*
+	 * if this state is true the carBodySelection component will be rendered
+	 * if not the carData form component will be rendered
+	 */
+	const [currentPage, setCurrentPage] = useState<boolean>(true);
 	return (
 		<div className="car-submit-container">
 			<CarDataContextProvider>
-				{isOnCarBodySelectionPage ? (
-					<CarBodySelection
-						setCurrentComponent={setIsOnCarBodySelectionPage}
-					/>
+				{currentPage ? (
+					<CarBodySelection changePage={setCurrentPage} />
 				) : (
-					<CarSubmitForm
-						CarData={CarData}
-						setCarData={setCarData}
-						setCurrentComponent={setIsOnCarBodySelectionPage}
-					/>
+					<CarSubmitForm changePage={setCurrentPage} />
 				)}
 			</CarDataContextProvider>
 		</div>

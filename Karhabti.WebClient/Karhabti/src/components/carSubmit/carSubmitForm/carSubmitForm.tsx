@@ -1,29 +1,24 @@
-import {
-	Slider,
-	SliderTrack,
-	SliderFilledTrack,
-	SliderThumb,
-	Box,
-} from '@chakra-ui/react';
 import './carSubmitForm.scss';
 import AddCarImage from '../../../assets/addCar.png';
 import CustomInput from '../../_global/input/input';
-import { AiFillCar } from 'react-icons/ai';
 import { dropdownContentLister } from '../../signup/content/signupContent';
 import CustomDropdown from '../../_global/dropdown/dropdown';
-import { ICarSubmitData } from '../../../types/types';
 import { CarDataContext, IContext } from '../../../context/carDataContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { Switch } from '@chakra-ui/react';
+import FormButton from '../../_global/formButton/formButton';
+import CustomSlider from './slider/slider';
 
 interface ICarBodySelectionProps {
-	setCurrentComponent: (arg: boolean) => void;
-	CarData: ICarSubmitData;
-	setCarData: (arg: ICarSubmitData) => void;
+	changePage: (arg: boolean) => void;
 }
 
 export default function CarSubmitForm(props: ICarBodySelectionProps) {
-	const carContext: IContext | null = useContext(CarDataContext);
-	console.log(carContext?.carData.Power);
+	const carContext: IContext = useContext(CarDataContext);
+
+	useEffect(() => {
+		console.log(carContext.carData);
+	}, [carContext.carData]);
 
 	return (
 		<div className="car-submit-form-container">
@@ -36,42 +31,108 @@ export default function CarSubmitForm(props: ICarBodySelectionProps) {
 			</div>
 			<div className="right">
 				<div className="form-container">
+					<p className="form-label">Please fill in your car's info</p>
 					<CustomInput
 						width="100%"
 						placeholder="Enter your car model"
 						label="Model"
 						type="text"
-						value={''}
-						setValue={function (arg: string): void {
-							throw new Error('Function not implemented.');
+						value={carContext.carData.Model}
+						setValue={(arg: string) => {
+							carContext.setCarData({
+								...carContext.carData,
+								Model: arg,
+							});
 						}}
 					/>
-					<div className="slider-container">
-						<div className="power">{props.CarData.Power}</div>
-						<Slider
-							min={0}
-							max={500}
-							aria-label="slider-ex-4"
-							defaultValue={30}
-							onChange={(value) => {
-								props.setCarData({ ...props.CarData, Power: value });
-							}}
-						>
-							<SliderTrack bg="red.100">
-								<SliderFilledTrack bg="tomato" />
-							</SliderTrack>
-							<SliderThumb boxSize={6}>
-								<Box color="tomato" as={AiFillCar} />
-							</SliderThumb>
-						</Slider>
-					</div>
+
+					<CustomSlider
+						label="Power"
+						min={0}
+						max={500}
+						value={carContext.carData.Power}
+						onChange={(value) => {
+							carContext.setCarData({
+								...carContext.carData,
+								Power: value,
+							});
+						}}
+					/>
 
 					<CustomDropdown
 						width="100%"
 						label="year"
 						list={dropdownContentLister(1920, 2024)}
-						setValue={() => {}}
+						setValue={(arg: string) => {
+							carContext.setCarData({
+								...carContext.carData,
+								Year: parseInt(arg),
+							});
+						}}
 					/>
+
+					<CustomInput
+						width="100%"
+						placeholder="Enter your car's color"
+						label="Color"
+						type="text"
+						value={carContext.carData.Color}
+						setValue={(arg: string) => {
+							carContext.setCarData({
+								...carContext.carData,
+								Color: arg,
+							});
+						}}
+					/>
+
+					<CustomSlider
+						label="Engine Size"
+						min={1}
+						max={10}
+						value={carContext.carData.EngineSize}
+						onChange={(value) => {
+							carContext.setCarData({
+								...carContext.carData,
+								EngineSize: value,
+							});
+						}}
+					/>
+
+					<div className="switch-container">
+						<span className="gas-type">Gas Type:</span>
+						<div>
+							<span>Diesel</span>
+							<Switch
+								id="email-alerts"
+								onChange={() => {
+									if (carContext.carData.GasType == 'gasoline') {
+										carContext.setCarData({
+											...carContext.carData,
+											GasType: 'diesel',
+										});
+										return;
+									}
+									carContext.setCarData({
+										...carContext.carData,
+										GasType: 'gasoline',
+									});
+								}}
+							/>
+							<span>Gasoline</span>
+						</div>
+					</div>
+
+					<div className="input-container">
+						<div
+							className="previous-button"
+							onClick={() => {
+								props.changePage(true);
+							}}
+						>
+							Previous
+						</div>
+						<FormButton width="60%" text="submit" onClick={() => {}} />
+					</div>
 				</div>
 			</div>
 		</div>
