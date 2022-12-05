@@ -1,13 +1,13 @@
 import './carSubmitForm.scss';
 import AddCarImage from '../../../assets/addCar.png';
 import CustomInput from '../../_global/input/input';
-import { dropdownContentLister } from '../../signup/content/signupContent';
 import CustomDropdown from '../../_global/dropdown/dropdown';
 import { CarDataContext, IContext } from '../../../context/carDataContext';
 import { useContext, useEffect } from 'react';
 import { Switch } from '@chakra-ui/react';
 import FormButton from '../../_global/formButton/formButton';
 import CustomSlider from './slider/slider';
+import { dropdownContentLister } from '../../../static/functions';
 
 interface ICarBodySelectionProps {
 	changePage: (arg: boolean) => void;

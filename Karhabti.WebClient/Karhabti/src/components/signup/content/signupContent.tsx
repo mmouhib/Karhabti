@@ -3,17 +3,12 @@ import Logo from '../../_global/logo/logo';
 import CustomInput from '../../_global/input/input';
 import CustomDropdown from '../../_global/dropdown/dropdown';
 import FormButton from '../../_global/formButton/formButton';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { addUser } from '../../../utils/api';
 import { Link } from 'react-router-dom';
-
-export function dropdownContentLister(min: number, max: number): string[] {
-	let list: string[] = [];
-	for (let index = min; index < max; index++) {
-		list.push(index + '');
-	}
-	return list;
-}
+import { IUserSubmit } from '../../../types/types';
+import { userContext } from '../../../context/userContext';
+import { dropdownContentLister } from '../../../static/functions';
 
 /*
  * the 'dateFormatter' function formats the date string to the wanted one.
@@ -30,6 +25,8 @@ function dateFormatter(year: string, month: string, day: string): string {
 }
 
 export default function SignupContent() {
+	// const userDataContext: IUserSubmit = useContext(userContext);
+
 	const [username, setUsername] = useState<string>('');
 	const [firstName, setFirstName] = useState<string>('');
 	const [lastName, setLastName] = useState<string>('');
