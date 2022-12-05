@@ -13,3 +13,14 @@ export interface ICarSubmitData {
 	GasType: 'gasoline' | 'diesel';
 	BodyType: string;
 }
+
+export interface IUserSubmit {
+	username: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	password: string;
+	birthDate: string;
+	gender: string;
+	avatar: string;
+}

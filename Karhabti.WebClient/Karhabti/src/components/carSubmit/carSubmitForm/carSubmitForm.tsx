@@ -2,8 +2,8 @@ import './carSubmitForm.scss';
 import AddCarImage from '../../../assets/addCar.png';
 import CustomInput from '../../_global/input/input';
 import CustomDropdown from '../../_global/dropdown/dropdown';
-import { CarDataContext, IContext } from '../../../context/carDataContext';
-import { useContext, useEffect } from 'react';
+import { CarDataContext, ICarContext } from '../../../context/carDataContext';
+import { useContext } from 'react';
 import { Switch } from '@chakra-ui/react';
 import FormButton from '../../_global/formButton/formButton';
 import CustomSlider from './slider/slider';
@@ -14,11 +14,7 @@ interface ICarBodySelectionProps {
 }
 
 export default function CarSubmitForm(props: ICarBodySelectionProps) {
-	const carContext: IContext = useContext(CarDataContext);
-
-	useEffect(() => {
-		console.log(carContext.carData);
-	}, [carContext.carData]);
+	const carContext: ICarContext = useContext(CarDataContext);
 
 	return (
 		<div className="car-submit-form-container">

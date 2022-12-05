@@ -39,6 +39,10 @@
       align-items: center;
       justify-content: space-between;
 
+      & a {
+        width: 60%;
+      }
+
       & .clear-button {
         width: 30%;
         border: 3px solid #e55353;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { IUserSubmit } from '../types/types';
 
 const userEndpoint: string = 'https://localhost:7129/api/user';
 const carEndpoint: string = 'https://localhost:7129/api/car';
@@ -23,7 +24,7 @@ export async function getCar(id: number) {
 	return res.data;
 }
 
-export async function addUser(data: any) {
+export async function addUser(data: IUserSubmit) {
 	axios.post(userEndpoint, data).then(() => {
 		console.log('data submitted');
 		console.log(getAllUsers());

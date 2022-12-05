@@ -1,5 +1,5 @@
 import './avatar.scss';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 // image imports
 import AvatarOne from '../../assets/avatars/1.png';
 import AvatarTwo from '../../assets/avatars/2.png';
@@ -12,6 +12,8 @@ import AvatarEight from '../../assets/avatars/8.png';
 import AvatarNine from '../../assets/avatars/9.png';
 import AvatarItem from '../../components/avatar/item';
 import FormButton from '../../components/_global/formButton/formButton';
+import { addUser } from '../../utils/api';
+import { IUserContext, userContext } from '../../context/userContext';
 
 export interface IAvatar {
 	image: any;
@@ -31,9 +33,22 @@ const Avatars: IAvatar[] = [
 ];
 
 export default function Avatar() {
+	const userDataContext: IUserContext = useContext(userContext);
+
 	const [avatarSelection, setAvatarSelection] = useState<boolean[]>(
 		new Array(Avatars.length).fill(false)
 	);
+
+	useEffect(() => {
+		userDataContext.setUserData({
+			...userDataContext.userData,
+			avatar: avatarSelection.indexOf(true).toString(),
+		});
+	}, [avatarSelection]);
+
+	function submitHandler(): void {
+		addUser(userDataContext.userData);
+	}
 
 	return (
 		<div className="avatar-container">
@@ -51,7 +66,7 @@ export default function Avatar() {
 					);
 				})}
 			</div>
-			<FormButton width="20%" text="Proceed" onClick={() => {}} />
+			<FormButton width="20%" text="Proceed" onClick={submitHandler} />
 		</div>
 	);
 }

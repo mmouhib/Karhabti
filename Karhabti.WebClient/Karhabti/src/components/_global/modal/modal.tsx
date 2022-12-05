@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useContext, useState } from 'react';
 import CustomInput from '../input/input';
-import { CarDataContext, IContext } from '../../../context/carDataContext';
+import { CarDataContext, ICarContext } from '../../../context/carDataContext';
 
 interface IModalProps {
 	modalState: boolean;
@@ -21,7 +21,7 @@ interface IModalProps {
 }
 
 export default function CustomModal(props: IModalProps) {
-	const carContext: IContext = useContext(CarDataContext);
+	const carContext: ICarContext = useContext(CarDataContext);
 
 	const [inputValue, setInputValue] = useState<string>('');
 

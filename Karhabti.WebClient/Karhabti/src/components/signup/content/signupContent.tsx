@@ -3,11 +3,9 @@ import Logo from '../../_global/logo/logo';
 import CustomInput from '../../_global/input/input';
 import CustomDropdown from '../../_global/dropdown/dropdown';
 import FormButton from '../../_global/formButton/formButton';
-import { useContext, useState } from 'react';
-import { addUser } from '../../../utils/api';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IUserSubmit } from '../../../types/types';
-import { userContext } from '../../../context/userContext';
+import { IUserContext, userContext } from '../../../context/userContext';
 import { dropdownContentLister } from '../../../static/functions';
 
 /*
@@ -25,38 +23,35 @@ function dateFormatter(year: string, month: string, day: string): string {
 }
 
 export default function SignupContent() {
-	// const userDataContext: IUserSubmit = useContext(userContext);
+	const userDataContext: IUserContext = useContext(userContext);
 
-	const [username, setUsername] = useState<string>('');
-	const [firstName, setFirstName] = useState<string>('');
-	const [lastName, setLastName] = useState<string>('');
-	const [email, setEmail] = useState<string>('');
-	const [gender, setGender] = useState<string>('');
-	const [password, setPassword] = useState<string>('');
 	const [confirmPassword, setConfirmPassword] = useState<string>('');
 	const [day, setDay] = useState<string>('10');
 	const [month, setMonth] = useState<string>('10');
 	const [year, setYear] = useState<string>('2000');
 
-	function submitHandler(): void {
-		addUser({
-			username: username,
-			firstName: firstName,
-			lastName: lastName,
-			email: email,
-			password: password,
+	/*
+	 * change the birthDate field in the userContext whenever
+	 * one of the date (year, month, day) data changes
+	 * */
+	useEffect(() => {
+		userDataContext.setUserData({
+			...userDataContext.userData,
 			birthDate: dateFormatter(year, month, day),
-			gender: gender,
 		});
-	}
+	}, [day, month, year]);
 
 	function clearFields(): void {
-		setUsername('');
-		setFirstName('');
-		setLastName('');
-		setEmail('');
-		setGender('');
-		setPassword('');
+		userDataContext.setUserData({
+			username: '',
+			firstName: '',
+			lastName: '',
+			email: '',
+			password: '',
+			birthDate: '2019-01-06T17:16:40',
+			gender: 'male',
+			avatar: '',
+		});
 		setConfirmPassword('');
 		setDay('');
 		setMonth('');
@@ -77,16 +72,26 @@ export default function SignupContent() {
 						width="50%"
 						placeholder="Enter your first name"
 						type="text"
-						value={firstName}
-						setValue={setFirstName}
+						value={userDataContext.userData.firstName}
+						setValue={(arg: string) => {
+							userDataContext.setUserData({
+								...userDataContext.userData,
+								firstName: arg,
+							});
+						}}
 					/>
 					<CustomInput
 						label="Last Name"
 						width="50%"
 						placeholder="Enter your last name"
 						type="text"
-						value={lastName}
-						setValue={setLastName}
+						value={userDataContext.userData.lastName}
+						setValue={(arg: string) => {
+							userDataContext.setUserData({
+								...userDataContext.userData,
+								lastName: arg,
+							});
+						}}
 					/>
 				</div>
 
@@ -96,14 +101,24 @@ export default function SignupContent() {
 						width="65%"
 						placeholder="Enter your username"
 						type="text"
-						value={username}
-						setValue={setUsername}
+						value={userDataContext.userData.username}
+						setValue={(arg: string) => {
+							userDataContext.setUserData({
+								...userDataContext.userData,
+								username: arg,
+							});
+						}}
 					/>
 					<CustomDropdown
 						width="35%"
 						label="Gender"
 						list={['male', 'female']}
-						setValue={setGender}
+						setValue={(arg: string) => {
+							userDataContext.setUserData({
+								...userDataContext.userData,
+								gender: arg,
+							});
+						}}
 					/>
 				</div>
 
@@ -113,8 +128,13 @@ export default function SignupContent() {
 						width="100%"
 						placeholder="Enter your email"
 						type="email"
-						value={email}
-						setValue={setEmail}
+						value={userDataContext.userData.email}
+						setValue={(arg: string) => {
+							userDataContext.setUserData({
+								...userDataContext.userData,
+								email: arg,
+							});
+						}}
 					/>
 				</div>
 
@@ -124,8 +144,13 @@ export default function SignupContent() {
 						width="50%"
 						placeholder="Enter your password"
 						type="text"
-						value={password}
-						setValue={setPassword}
+						value={userDataContext.userData.password}
+						setValue={(arg: string) => {
+							userDataContext.setUserData({
+								...userDataContext.userData,
+								password: arg,
+							});
+						}}
 					/>
 					<CustomInput
 						label="Confirm"
@@ -160,11 +185,7 @@ export default function SignupContent() {
 
 				<div className="button-container">
 					<Link to={'avatar'}>
-						<FormButton
-							width="60%"
-							text="sign up"
-							onClick={submitHandler}
-						/>
+						<FormButton width="100%" text="sign up" onClick={() => {}} />
 					</Link>
 					<div
 						className="clear-button"

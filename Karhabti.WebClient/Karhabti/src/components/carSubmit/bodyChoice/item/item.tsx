@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import './item.scss';
-import { CarDataContext, IContext } from '../../../../context/carDataContext';
+import {
+	CarDataContext,
+	ICarContext,
+} from '../../../../context/carDataContext';
 
 interface IItemProps {
 	id: number;
@@ -21,7 +24,7 @@ const itemIsNotSelected: React.CSSProperties = {
 };
 
 export default function Item(props: IItemProps) {
-	const carContext: IContext = useContext(CarDataContext);
+	const carContext: ICarContext = useContext(CarDataContext);
 
 	const _onClick = (): void => {
 		// in case the last item is selected which is the "Other" box
