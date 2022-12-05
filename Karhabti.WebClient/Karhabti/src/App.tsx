@@ -1,9 +1,9 @@
-import Home from './pages/home';
-import Login from './pages/login/login';
-import Signup from './pages/signup/signup';
-import CarSubmit from './pages/carSubmit/carSubmit';
+import Home from './routes/home';
+import Login from './routes/login/login';
+import Signup from './routes/signup/signup';
+import CarSubmit from './routes/carSubmit/carSubmit';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Avatar from './pages/Avatar/avatar';
+import Avatar from './routes/Avatar/avatar';
 import OutletWrapper from './components/_global/outlet/outletWrapper';
 
 export default function App() {

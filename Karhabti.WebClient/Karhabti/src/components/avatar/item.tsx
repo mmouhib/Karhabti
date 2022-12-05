@@ -1,5 +1,5 @@
 import './item.scss';
-import { IAvatar } from '../../pages/Avatar/avatar';
+import { IAvatar } from '../../routes/Avatar/avatar';
 
 interface IAvatarItemProps {
 	id: number;
