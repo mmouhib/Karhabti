@@ -1,9 +1,9 @@
 import Home from './routes/home';
-import Login from './routes/login/login';
-import Signup from './routes/signup/signup';
-import CarSubmit from './routes/carSubmit/carSubmit';
+import Login from './routes/login';
+import Signup from './routes/signup';
+import CarSubmit from './routes/carSubmit';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Avatar from './routes/Avatar/avatar';
+import Avatar from './routes/avatar';
 import OutletWrapper from './components/_global/outlet/outletWrapper';
 import UserDataContextProvider from './context/userContext';
 
