@@ -1,0 +1,68 @@
+.user-section-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 35%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+
+  & .info-section {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 5px;
+  }
+
+  & .avatar-section {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 5px;
+
+    & img {
+      width: 30%;
+    }
+
+    & .names-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      & .full-name {
+        font-family: 'Righteous', cursive;
+      }
+
+      & .username {
+        font-family: Roboto, sans-serif;
+      }
+    }
+  }
+
+  & .share-section {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 5px;
+
+  }
+
+
+}

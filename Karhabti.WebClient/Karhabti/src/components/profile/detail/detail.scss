@@ -1,0 +1,15 @@
+.profile-detail-section {
+  font-family: Roboto, sans-serif;
+
+  & .label {
+    font-weight: 500;
+    color: #9a9a9a;
+    text-transform: capitalize;
+    font-size: 0.9em;
+  }
+
+  & .content {
+    font-weight: 600;
+  }
+
+}

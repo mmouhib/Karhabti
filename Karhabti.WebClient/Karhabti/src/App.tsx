@@ -4,8 +4,9 @@ import Signup from './routes/signup';
 import CarSubmit from './routes/carSubmit';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Avatar from './routes/avatar';
-import OutletWrapper from './components/_global/outlet/outletWrapper';
-import UserDataContextProvider from './context/userContext';
+import Outlet from './components/_global/outlet/outletWrapper';
+import UserContextProvider from './context/userContext';
+import Profile from './routes/profile';
 
 export default function App() {
 	return (
@@ -15,9 +16,9 @@ export default function App() {
 				<Route
 					path="signup"
 					element={
-						<UserDataContextProvider>
-							<OutletWrapper />
-						</UserDataContextProvider>
+						<UserContextProvider>
+							<Outlet />
+						</UserContextProvider>
 					}
 				>
 					<Route path="" element={<Signup />} />
@@ -25,6 +26,7 @@ export default function App() {
 				</Route>
 				<Route path="login" element={<Login />} />
 				<Route path="add-car" element={<CarSubmit />} />
+				<Route path="profile" element={<Profile />} />
 			</Routes>
 		</BrowserRouter>
 	);
