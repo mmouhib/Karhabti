@@ -8,6 +8,8 @@ public class UserPostDto
     public string Email { get; set; }
     public string Password { get; set; }
     public DateTime BirthDate { get; set; }
+    public string Gender { get; set; }
+    public string Avatar { get; set; }
 }
 
 public class UserGetDto : UserPostDto
