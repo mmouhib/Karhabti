@@ -2,35 +2,22 @@ import Home from './pages/home';
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 import CarSubmit from './pages/carSubmit/carSubmit';
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ChakraProvider } from '@chakra-ui/react';
-
-const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <Home />,
-	},
-	{
-		path: '/login',
-		element: <Login />,
-	},
-	{
-		path: '/signup',
-		element: <Signup />,
-	},
-	{
-		path: '/add-car',
-		element: <CarSubmit />,
-	},
-]);
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Avatar from './pages/Avatar/avatar';
+import OutletWrapper from './components/_global/outlet/outletWrapper';
 
 export default function App() {
 	return (
-		<ChakraProvider>
-			<div style={{ width: '100vw', height: '100vh' }}>
-				<RouterProvider router={router} />
-			</div>
-		</ChakraProvider>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="signup" element={<OutletWrapper />}>
+					<Route path="" element={<Signup />} />
+					<Route path="avatar" element={<Avatar />} />
+				</Route>
+				<Route path="login" element={<Login />} />
+				<Route path="add-car" element={<CarSubmit />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
