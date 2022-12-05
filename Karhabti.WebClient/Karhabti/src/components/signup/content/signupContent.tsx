@@ -5,6 +5,7 @@ import CustomDropdown from '../../_global/dropdown/dropdown';
 import FormButton from '../../_global/formButton/formButton';
 import { useState } from 'react';
 import { addUser } from '../../../utils/api';
+import { Link } from 'react-router-dom';
 
 export function dropdownContentLister(min: number, max: number): string[] {
 	let list: string[] = [];
@@ -12,6 +13,20 @@ export function dropdownContentLister(min: number, max: number): string[] {
 		list.push(index + '');
 	}
 	return list;
+}
+
+/*
+ * the 'dateFormatter' function formats the date string to the wanted one.
+ * in order to submit it, the date should be like this format : "2019-01-06T17:16:40"
+ * so this functions takes the day, month and year and formats it
+ * */
+function dateFormatter(year: string, month: string, day: string): string {
+	let localDay: string;
+	let localMonth: string;
+
+	day.length == 1 ? (localDay = '0' + day) : (localDay = day);
+	month.length == 1 ? (localMonth = '0' + month) : (localMonth = month);
+	return `${year}-${localMonth}-${localDay}T17:16:40`;
 }
 
 export default function SignupContent() {
@@ -22,18 +37,19 @@ export default function SignupContent() {
 	const [gender, setGender] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [confirmPassword, setConfirmPassword] = useState<string>('');
-	const [day, setDay] = useState<string>();
-	const [month, setMonth] = useState<string>();
-	const [year, setYear] = useState<string>();
+	const [day, setDay] = useState<string>('10');
+	const [month, setMonth] = useState<string>('10');
+	const [year, setYear] = useState<string>('2000');
 
-	function submitHandler() {
+	function submitHandler(): void {
 		addUser({
 			username: username,
 			firstName: firstName,
 			lastName: lastName,
 			email: email,
 			password: password,
-			birthDate: '2019-01-06T17:16:40',
+			birthDate: dateFormatter(year, month, day),
+			gender: gender,
 		});
 	}
 
@@ -146,7 +162,13 @@ export default function SignupContent() {
 				</div>
 
 				<div className="button-container">
-					<FormButton width="60%" text="sign up" onClick={submitHandler} />
+					<Link to={'avatar'}>
+						<FormButton
+							width="60%"
+							text="sign up"
+							onClick={submitHandler}
+						/>
+					</Link>
 					<div
 						className="clear-button"
 						onClick={() => {
