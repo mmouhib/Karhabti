@@ -1,5 +1,9 @@
 .profile-detail-section {
   font-family: Roboto, sans-serif;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
 
   & .label {
     font-weight: 500;
@@ -8,8 +12,14 @@
     font-size: 0.9em;
   }
 
-  & .content {
-    font-weight: 600;
-  }
+  & .data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
 
+    & .content {
+      font-weight: 600;
+    }
+  }
 }

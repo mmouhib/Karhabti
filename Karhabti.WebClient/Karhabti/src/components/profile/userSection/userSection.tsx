@@ -1,58 +1,21 @@
 import './userSection.scss';
-import { IUserSubmit } from '../../../types/types';
-import ProfileDetail from '../detail/detail';
-// image imports
-import AvatarOne from '../../../assets/avatars/1.png';
-import AvatarTwo from '../../../assets/avatars/2.png';
-import AvatarThree from '../../../assets/avatars/3.png';
-import AvatarFour from '../../../assets/avatars/4.png';
-import AvatarFive from '../../../assets/avatars/5.png';
-import AvatarSix from '../../../assets/avatars/6.png';
-import AvatarSeven from '../../../assets/avatars/7.png';
-import AvatarEight from '../../../assets/avatars/8.png';
-import AvatarNine from '../../../assets/avatars/9.png';
+import { IUserProfileData } from '../../../routes/profile';
+import { ICarSubmitData } from '../../../types/types';
+import UserInfo from './userInfo/userInfo';
+import CarInfo from './carInfo/carInfo';
+import UserAvatar from './userAvatar/userAvatar';
 
-const Avatars = [
-	AvatarOne,
-	AvatarTwo,
-	AvatarThree,
-	AvatarFour,
-	AvatarFive,
-	AvatarSix,
-	AvatarSeven,
-	AvatarEight,
-	AvatarNine,
-];
+interface IUserSectionProps {
+	userData: IUserProfileData;
+	carData: ICarSubmitData;
+}
 
-export default function UserSection({ data }: { data: IUserSubmit }) {
+export default function UserSection({ userData, carData }: IUserSectionProps) {
 	return (
-		<div className="user-section-container">
-			<div className="info-section">
-				<p>User Info:</p>
-				{Object.keys(data).map((key: string, index: number) => {
-					return (
-						// @ts-ignore
-						<ProfileDetail key={index} label={key} content={data[key]} />
-					);
-				})}
-			</div>
-			<div className="avatar-section">
-				<img
-					src={
-						Avatars.length == 1
-							? Avatars[0]
-							: Avatars[parseInt(data.avatar)]
-					}
-					alt="avatar"
-				/>
-				<div className="names-container">
-					<p className="full-name">
-						{data.firstName + ' ' + data.lastName}
-					</p>
-					<p className="username">{'@' + data.username}</p>
-				</div>
-			</div>
-			<div className="share-section"></div>
+		<div className='user-section-container'>
+			<UserInfo userData={userData} />
+			<UserAvatar userData={userData} />
+			<CarInfo carData={carData} />
 		</div>
 	);
 }
