@@ -39,13 +39,13 @@ public class GasFillController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<CarGetDto> AddCar(CarPostDto gasFillToAdd)
+    public ActionResult<GasFillGetDto> AddGasFill(GasFillPostDto gasFillToAdd)
     {
         var mappedGasFill = _mapper.Map<GasFill>(gasFillToAdd);
         _repository.Add(mappedGasFill);
         _unitOfWork.Commit();
 
-        var gasFillToReturn = _mapper.Map<CarGetDto>(mappedGasFill);
+        var gasFillToReturn = _mapper.Map<GasFillGetDto>(mappedGasFill);
         return CreatedAtRoute(
             nameof(GetGasFillById),
             new { id = gasFillToReturn.Id },
