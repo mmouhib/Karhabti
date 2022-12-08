@@ -3,38 +3,57 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 35%;
+  height: 40%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 
-  & .avatar-section {
-    width: 30%;
+  & .user-actions {
+    width: 33%;
     height: 100%;
+    font-family: 'Righteous', cursive;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
-    flex-wrap: wrap;
-    padding: 20px;
-    gap: 5px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    gap: 5%;
 
-    & img {
-      width: 30%;
-    }
-
-    & .names-container {
+    & .profile-action-button {
+      width: 40%;
+      padding: 3px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
+      gap: 5%;
+      border-radius: 5px;
+      border: 2px solid;
+      cursor: pointer;
 
-      & .full-name {
-        font-family: 'Righteous', cursive;
+      &:hover {
+        border-radius: 15px;
+        transition: .5s ease-in;
       }
+    }
 
-      & .username {
-        font-family: Roboto, sans-serif;
+    & .delete {
+      border-color: #FE6B6B;
+      background-color: #FE6B6B;
+      color: white;
+
+      &:hover {
+        color: #FE6B6B;
+        background-color: white;
+      }
+    }
+
+    & .share {
+      color: white;
+      border-color: #3f5dbe;
+      background-color: #3f5dbe;
+
+      &:hover {
+        color: #3f5dbe;
+        background-color: white;
       }
     }
   }

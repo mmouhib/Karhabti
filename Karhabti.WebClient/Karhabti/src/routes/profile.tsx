@@ -1,19 +1,9 @@
 import React from 'react';
+import '../styles/profile.scss';
 import UserSection from '../components/profile/userSection/userSection';
 import ProfileNav from '../components/profile/nav/nav';
-import CarDetails from '../components/profile/carDetails/carDetails';
+import CarData from '../components/profile/CarData/carData';
 import { ICarSubmitData } from '../types/types';
-
-const containerStyle: React.CSSProperties = {
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'space-between',
-	backgroundColor: '#eeeffd',
-	width: '100vw',
-	height: '100vh',
-	flexDirection: 'column',
-	padding: '0 2vw 5vh 2vw',
-};
 
 export interface IUserProfileData {
 	username: string;
@@ -47,10 +37,10 @@ const userData: IUserProfileData = {
 
 export default function Profile() {
 	return (
-		<div style={containerStyle}>
+		<div className="profile-container">
 			<ProfileNav />
-			<UserSection userData={userData} carData={carData} />
-			<CarDetails data={carData} />
+			<UserSection userData={userData} />
+			<CarData carData={carData} />
 		</div>
 	);
 }

@@ -8,7 +8,7 @@ import AvatarSix from '../../../../assets/avatars/6.png';
 import AvatarSeven from '../../../../assets/avatars/7.png';
 import AvatarEight from '../../../../assets/avatars/8.png';
 import AvatarNine from '../../../../assets/avatars/9.png';
-import { IUserProfileData } from '../../../../routes/profile';
+import { IUserProfileData as UserDto } from '../../../../routes/profile';
 
 const Avatars = [
 	AvatarOne,
@@ -22,11 +22,7 @@ const Avatars = [
 	AvatarNine,
 ];
 
-export default function UserAvatar({
-	userData,
-}: {
-	userData: IUserProfileData;
-}) {
+export default function UserAvatar({ userData }: { userData: UserDto }) {
 	return (
 		<div className="avatar-section">
 			<img

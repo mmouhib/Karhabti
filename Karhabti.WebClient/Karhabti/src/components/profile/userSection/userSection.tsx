@@ -1,21 +1,23 @@
 import './userSection.scss';
-import { IUserProfileData } from '../../../routes/profile';
-import { ICarSubmitData } from '../../../types/types';
+import { IUserProfileData as UserDto } from '../../../routes/profile';
 import UserInfo from './userInfo/userInfo';
-import CarInfo from './carInfo/carInfo';
 import UserAvatar from './userAvatar/userAvatar';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ShareIcon from '@mui/icons-material/Share';
 
-interface IUserSectionProps {
-	userData: IUserProfileData;
-	carData: ICarSubmitData;
-}
-
-export default function UserSection({ userData, carData }: IUserSectionProps) {
+export default function UserSection({ userData }: { userData: UserDto }) {
 	return (
-		<div className='user-section-container'>
+		<div className="user-section-container">
 			<UserInfo userData={userData} />
 			<UserAvatar userData={userData} />
-			<CarInfo carData={carData} />
+			<div className="user-actions">
+				<div className="profile-action-button share">
+					Share <ShareIcon fontSize={'small'} />
+				</div>
+				<div className="profile-action-button delete">
+					Delete <DeleteIcon fontSize={'small'} />
+				</div>
+			</div>
 		</div>
 	);
 }
