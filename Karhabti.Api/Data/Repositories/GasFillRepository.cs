@@ -40,4 +40,9 @@ public class GasFillRepository : IGasFillRepo
     {
         _context.Update(entityInstance);
     }
+
+    public IEnumerable<GasFill> GetGasFillByCarId(int id)
+    {
+        return _context.GasFills.ToList().Where(gasFill => gasFill.CarId == id);
+    }
 }

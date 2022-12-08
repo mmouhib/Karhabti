@@ -52,4 +52,11 @@ public class GasFillController : ControllerBase
             gasFillToReturn
         );
     }
+
+    [HttpGet("car/{id}", Name = "GetGasFillByCarId")]
+    public ActionResult<IEnumerable<GasFillGetDto>> GetGasFillByCarId(int id)
+    {
+        var gasFills = _repository.GetGasFillByCarId(id);
+        return Ok(_mapper.Map<IEnumerable<GasFillGetDto>>(gasFills));
+    }
 }
