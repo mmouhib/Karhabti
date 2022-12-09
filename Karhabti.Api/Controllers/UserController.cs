@@ -51,4 +51,12 @@ public class UserController : ControllerBase
             userResult
         );
     }
+
+    [HttpGet("auth", Name = "UserAuth")]
+    public ActionResult<UserGetDto> UserAuth([FromQuery] string email, [FromQuery] string password)
+    {
+        var result = _repository.GetAuth(email, password);
+        if (result == null) return NotFound();
+        return Ok(_mapper.Map<UserGetDto>(result));
+    }
 }

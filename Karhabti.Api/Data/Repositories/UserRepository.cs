@@ -37,4 +37,9 @@ public class UserRepository : IUserRepo
     {
         _context.Update(entityInstance);
     }
+
+    public User GetAuth(string email, string password)
+    {
+        return _context.Users.FirstOrDefault(user => user.Email == email && user.Password == password);
+    }
 }
