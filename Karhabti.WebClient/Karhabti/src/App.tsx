@@ -7,12 +7,14 @@ import Avatar from './routes/avatar';
 import Outlet from './components/_global/outlet/outletWrapper';
 import UserContextProvider from './context/userContext';
 import Profile from './routes/profile';
+import GasFills from './routes/gasFills';
 
 export default function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Home />} />
+
 				<Route
 					path="signup"
 					element={
@@ -24,9 +26,15 @@ export default function App() {
 					<Route path="" element={<Signup />} />
 					<Route path="avatar" element={<Avatar />} />
 				</Route>
+
 				<Route path="login" element={<Login />} />
+
 				<Route path="add-car" element={<CarSubmit />} />
-				<Route path="profile" element={<Profile />} />
+
+				<Route path="profile" element={<Outlet />}>
+					<Route path="" element={<Profile />} />
+					<Route path="gas-fills" element={<GasFills />} />
+				</Route>
 			</Routes>
 		</BrowserRouter>
 	);

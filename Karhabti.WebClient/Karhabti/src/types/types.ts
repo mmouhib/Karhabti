@@ -24,3 +24,10 @@ export interface IUserSubmit {
 	gender: string;
 	avatar: string;
 }
+
+export interface IGasFill {
+	quantity: number;
+	date: string;
+	price: number;
+	unit: string;
+}

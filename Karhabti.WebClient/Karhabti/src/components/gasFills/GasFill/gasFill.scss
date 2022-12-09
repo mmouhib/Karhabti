@@ -1,0 +1,26 @@
+.gas-fill-container{
+  height: 40px;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.49);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  & div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  & .label{
+    font-family: Roboto, sans-serif;
+    color: #969696;
+  }
+
+  & p{
+    font-family: Roboto, sans-serif;
+  }
+}
