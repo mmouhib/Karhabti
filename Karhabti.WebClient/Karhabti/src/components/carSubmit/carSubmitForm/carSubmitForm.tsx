@@ -8,6 +8,7 @@ import { Switch } from '@chakra-ui/react';
 import FormButton from '../../_global/formButton/formButton';
 import CustomSlider from './slider/slider';
 import { dropdownContentLister } from '../../../static/functions';
+import { addCar } from '../../../utils/api/api';
 
 interface ICarBodySelectionProps {
 	changePage: (arg: boolean) => void;
@@ -127,7 +128,13 @@ export default function CarSubmitForm(props: ICarBodySelectionProps) {
 						>
 							Previous
 						</div>
-						<FormButton width="60%" text="submit" onClick={() => {}} />
+						<FormButton
+							width="60%"
+							text="submit"
+							onClick={() => {
+								addCar(carContext.carData);
+							}}
+						/>
 					</div>
 				</div>
 			</div>

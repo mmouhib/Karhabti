@@ -1,10 +1,10 @@
 import './CarData.scss';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ProfileDetail from '../detail/detail';
-import { ICarSubmitData } from '../../../types/types';
+import { ICarPostDto } from '../../../utils/api/Dtos';
 import ProfileButtons from './ProfileButtons/ProfileButtons';
 
-export default function CarData({ carData }: { carData: ICarSubmitData }) {
+export default function CarData({ carData }: { carData: ICarPostDto }) {
 	return (
 		<div className="car-details-container">
 			<div className="user-car-section">

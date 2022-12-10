@@ -1,11 +1,17 @@
 import './gasFill.scss';
-import { IGasFill } from '../../../types/types';
+import { IGasFillGetDto } from '../../../utils/api/Dtos';
 
-export default function GasFill({ data, id }: { id: number; data: IGasFill }) {
+export default function GasFill({
+	data,
+	id,
+}: {
+	id: number;
+	data: IGasFillGetDto;
+}) {
 	return (
 		<div className="gas-fill-container">
 			<div className="id">
-				<span className="label">{id+1}</span>
+				<span className="label">{id + 1}</span>
 			</div>
 			<div className="date">
 				<span className="label">date:</span>

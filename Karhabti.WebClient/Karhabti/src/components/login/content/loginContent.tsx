@@ -4,8 +4,13 @@ import Logo from '../../_global/logo/logo';
 import LoginImage from '../../../assets/login.png';
 import CustomInput from '../../_global/input/input';
 import FormButton from '../../_global/formButton/formButton';
+import { getUserAuth } from '../../../utils/api/api';
+import { useState } from 'react';
 
 export default function LoginContent() {
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+
 	return (
 		<div className="login-content-container">
 			<div className="top-section">
@@ -24,17 +29,17 @@ export default function LoginContent() {
 							width="60%"
 							placeholder="Enter your email"
 							type="email"
-							value=""
 							label="email"
-							setValue={() => {}}
+							value={email}
+							setValue={setEmail}
 						/>
 						<CustomInput
 							width="60%"
 							placeholder="Enter your password"
 							type="password"
-							value=""
 							label="password"
-							setValue={() => {}}
+							value={password}
+							setValue={setPassword}
 						/>
 					</div>
 					<div className="additions">
@@ -45,7 +50,13 @@ export default function LoginContent() {
 
 						<span>Reset Password</span>
 					</div>
-					<FormButton width="50%" text="Log In" onClick={() => {}} />
+					<FormButton
+						width="50%"
+						text="Log In"
+						onClick={() => {
+							getUserAuth(email, password);
+						}}
+					/>
 
 					<p className="create-account">
 						Don't have an account ? <span>Create One</span>

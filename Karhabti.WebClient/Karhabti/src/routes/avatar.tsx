@@ -12,7 +12,7 @@ import AvatarEight from '../assets/avatars/8.png';
 import AvatarNine from '../assets/avatars/9.png';
 import AvatarItem from '../components/avatar/item';
 import FormButton from '../components/_global/formButton/formButton';
-import { addUser } from '../utils/api';
+import { addUser } from '../utils/api/api';
 import { IUserContext, userContext } from '../context/userContext';
 
 export interface IAvatar {

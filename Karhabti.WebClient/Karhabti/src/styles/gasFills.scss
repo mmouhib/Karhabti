@@ -17,6 +17,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 20%;
+
+    & p {
+      font-family: 'Righteous', cursive;
+    }
 
     & .add-button {
       display: flex;
@@ -28,6 +34,7 @@
       border-radius: 100px;
       color: white;
       box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+      cursor: pointer;
 
       &:hover {
         color: #1E42FF;
@@ -49,14 +56,14 @@
     flex-direction: column;
     gap: 10px;
 
-    & .empty-list{
+    & .empty-list {
       font-family: 'Righteous', cursive;
 
-      & .empty-title{
+      & .empty-title {
         font-size: 2em;
       }
 
-      & p{
+      & p {
         color: #562c2c;
       }
     }

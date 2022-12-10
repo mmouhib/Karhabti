@@ -3,7 +3,7 @@ import '../styles/profile.scss';
 import UserSection from '../components/profile/userSection/userSection';
 import ProfileNav from '../components/profile/nav/nav';
 import CarData from '../components/profile/CarData/carData';
-import { ICarSubmitData } from '../types/types';
+import { ICarPostDto } from '../utils/api/Dtos';
 
 export interface IUserProfileData {
 	username: string;
@@ -15,7 +15,7 @@ export interface IUserProfileData {
 	avatar: string;
 }
 
-const carData: ICarSubmitData = {
+const carData: ICarPostDto = {
 	Model: '2010 ford mustang',
 	Power: 1,
 	Year: 2010,
@@ -23,6 +23,7 @@ const carData: ICarSubmitData = {
 	EngineSize: 2,
 	GasType: 'diesel',
 	BodyType: 'Suv',
+	userId: 1,
 };
 
 const userData: IUserProfileData = {
