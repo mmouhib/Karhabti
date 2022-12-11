@@ -52,4 +52,12 @@ public class CarController : ControllerBase
             carToReturn
         );
     }
+
+    [HttpGet("owner/{id}")]
+    public ActionResult<CarGetDto> GetCarByOwnerId(int id)
+    {
+        var car = _repository.GetCarByOwnerId(id);
+        if (car == null) return NotFound();
+        return Ok(_mapper.Map<CarGetDto>(car));
+    }
 }

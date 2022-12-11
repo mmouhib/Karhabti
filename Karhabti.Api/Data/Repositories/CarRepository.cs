@@ -41,4 +41,9 @@ public class CarRepository : ICarRepo
     {
         _context.Update(entityInstance);
     }
+
+    public Car GetCarByOwnerId(int id)
+    {
+        return _context.Cars.FirstOrDefault(car => car.UserId == id);
+    }
 }
