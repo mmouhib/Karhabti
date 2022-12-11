@@ -9,6 +9,7 @@ import FormButton from '../../_global/formButton/formButton';
 import CustomSlider from './slider/slider';
 import { dropdownContentLister } from '../../../static/functions';
 import { addCar } from '../../../utils/api/api';
+import { IUserGetDto } from '../../../utils/api/Dtos';
 
 interface ICarBodySelectionProps {
 	changePage: (arg: boolean) => void;
@@ -132,7 +133,9 @@ export default function CarSubmitForm(props: ICarBodySelectionProps) {
 							width="60%"
 							text="submit"
 							onClick={() => {
-								addCar(carContext.carData);
+								// @ts-ignore
+								const user: IUserGetDto = JSON.parse(localStorage.getItem('user'));
+								addCar({ ...carContext.carData, userId: user.id });
 							}}
 						/>
 					</div>

@@ -27,10 +27,9 @@ export async function getCar(id: number) {
 }
 
 export async function addUser(data: IUserPostDto) {
-	console.log(data);
-	axios.post(userEndpoint, data).then(() => {
-		console.log('data submitted');
-		console.log(getAllUsers());
+	await axios.post(userEndpoint, data).then((r) => {
+		localStorage.clear();
+		localStorage.setItem('user', JSON.stringify(r.data));
 	});
 }
 
@@ -49,8 +48,8 @@ export async function addGasFill(data: IGasFillPostDto): Promise<void> {
 }
 
 export async function getUserAuth(email: string, password: string) {
-	const endpoint = `${userEndpoint}/auth?email=${email}&${password}`;
-	let res = await axios.get(endpoint);
-	console.log(res.data);
+	let res = await axios.get(
+		`https://localhost:7129/api/user/auth?email=${email}&password=${password}`
+	);
 	return res;
 }

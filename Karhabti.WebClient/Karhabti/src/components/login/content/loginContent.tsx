@@ -6,10 +6,15 @@ import CustomInput from '../../_global/input/input';
 import FormButton from '../../_global/formButton/formButton';
 import { getUserAuth } from '../../../utils/api/api';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginContent() {
+	const navigate = useNavigate();
+
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
+	const [emailError, setEmailError] = useState<boolean>(false);
+	const [passwordError, setPasswordError] = useState<boolean>(false);
 
 	return (
 		<div className="login-content-container">
@@ -54,7 +59,17 @@ export default function LoginContent() {
 						width="50%"
 						text="Log In"
 						onClick={() => {
-							getUserAuth(email, password);
+							getUserAuth(email, password)
+								.then((r) => {
+									localStorage.clear();
+									localStorage.setItem('user', JSON.stringify(r.data));
+									navigate('/profile');
+								})
+								.catch(() => {
+									setEmailError(true);
+									setPasswordError(true);
+									alert('user not found');
+								});
 						}}
 					/>
 

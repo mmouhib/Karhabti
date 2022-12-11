@@ -14,6 +14,7 @@ import AvatarItem from '../components/avatar/item';
 import FormButton from '../components/_global/formButton/formButton';
 import { addUser } from '../utils/api/api';
 import { IUserContext, userContext } from '../context/userContext';
+import { useNavigate } from 'react-router-dom';
 
 export interface IAvatar {
 	image: any;
@@ -33,6 +34,8 @@ const Avatars: IAvatar[] = [
 ];
 
 export default function Avatar() {
+	const navigate = useNavigate();
+
 	const userDataContext: IUserContext = useContext(userContext);
 
 	const [avatarSelection, setAvatarSelection] = useState<boolean[]>(
@@ -47,7 +50,9 @@ export default function Avatar() {
 	}, [avatarSelection]);
 
 	function submitHandler(): void {
-		addUser(userDataContext.userData);
+		addUser(userDataContext.userData).then((result) => {
+			navigate('/add-car');
+		});
 	}
 
 	return (
