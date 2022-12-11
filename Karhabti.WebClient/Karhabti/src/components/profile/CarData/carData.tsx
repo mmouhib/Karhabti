@@ -14,6 +14,11 @@ export default function CarData({ carData }: { carData: ICarPostDto }) {
 				</div>
 				<div className="car-data-section">
 					{Object.keys(carData).map((key: string, index: number) => {
+
+						// if the key is 'id' or 'userId' then its data will not be rendered
+						// because we don't want that information to be shown to the users.
+						if (['id', 'userId'].includes(key)) return;
+
 						return (
 							<ProfileDetail
 								key={index}

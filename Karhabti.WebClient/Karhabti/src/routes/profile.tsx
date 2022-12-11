@@ -1,9 +1,10 @@
-import React, {  useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/profile.scss';
 import UserSection from '../components/profile/userSection/userSection';
 import ProfileNav from '../components/profile/nav/nav';
 import CarData from '../components/profile/CarData/carData';
-import { ICarPostDto, IUserGetDto } from '../utils/api/Dtos';
+import { ICarGetDto, IUserGetDto } from '../utils/api/Dtos';
+import { getCarByOwnerId } from '../utils/api/api';
 
 export interface IUserProfileData {
 	username: string;
@@ -15,32 +16,18 @@ export interface IUserProfileData {
 	avatar: string;
 }
 
-const carData: ICarPostDto = {
-	Model: '2010 ford mustang',
-	Power: 1,
-	Year: 2010,
-	Color: 'Red',
-	EngineSize: 2,
-	GasType: 'diesel',
-	BodyType: 'Suv',
-	userId: 1,
-};
-
-// const userData: IUserProfileData = {
-// 	username: 'deflect',
-// 	firstName: 'mouhib',
-// 	lastName: 'ouni',
-// 	email: 'mouhib@gmail.com',
-// 	birthDate: '2019-01-06',
-// 	gender: 'male',
-// 	avatar: '4',
-// };
-
 export default function Profile() {
-	const [userData, setUserData] = useState<IUserGetDto>(
-		// @ts-ignore
-		JSON.parse(localStorage.getItem('user'))
-	);
+	// @ts-ignore
+	const userData: IUserGetDto = JSON.parse(localStorage.getItem('user'));
+
+	const [carData, setCarData] = useState<ICarGetDto>({} as ICarGetDto);
+
+	useEffect(() => {
+		getCarByOwnerId(userData.id).then((res) => {
+			setCarData(res.data);
+			localStorage.setItem('car', JSON.stringify(res.data));
+		});
+	}, []);
 
 	return (
 		<div className="profile-container">

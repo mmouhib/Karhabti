@@ -10,12 +10,14 @@ import CustomSlider from './slider/slider';
 import { dropdownContentLister } from '../../../static/functions';
 import { addCar } from '../../../utils/api/api';
 import { IUserGetDto } from '../../../utils/api/Dtos';
+import { useNavigate } from 'react-router-dom';
 
 interface ICarBodySelectionProps {
 	changePage: (arg: boolean) => void;
 }
 
 export default function CarSubmitForm(props: ICarBodySelectionProps) {
+	const navigate = useNavigate();
 	const carContext: ICarContext = useContext(CarDataContext);
 
 	return (
@@ -133,9 +135,12 @@ export default function CarSubmitForm(props: ICarBodySelectionProps) {
 							width="60%"
 							text="submit"
 							onClick={() => {
-								// @ts-ignore
-								const user: IUserGetDto = JSON.parse(localStorage.getItem('user'));
+								const user: IUserGetDto = JSON.parse(
+									// @ts-ignore
+									localStorage.getItem('user')
+								);
 								addCar({ ...carContext.carData, userId: user.id });
+								navigate('/profile');
 							}}
 						/>
 					</div>

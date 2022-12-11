@@ -48,8 +48,11 @@ export async function addGasFill(data: IGasFillPostDto): Promise<void> {
 }
 
 export async function getUserAuth(email: string, password: string) {
-	let res = await axios.get(
+	return await axios.get(
 		`https://localhost:7129/api/user/auth?email=${email}&password=${password}`
 	);
-	return res;
+}
+
+export async function getCarByOwnerId(id: number) {
+	return await axios.get(`https://localhost:7129/api/car/owner/${id}`);
 }
