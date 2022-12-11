@@ -13,7 +13,11 @@ import { dropdownContentLister } from '../../../static/functions';
  * in order to submit it, the date should be like this format : "2019-01-06T17:16:40"
  * so this functions takes the day, month and year and formats it
  * */
-function dateFormatter(year: string, month: string, day: string): string {
+export function dateFormatter(
+	year: string,
+	month: string,
+	day: string
+): string {
 	let localDay: string;
 	let localMonth: string;
 

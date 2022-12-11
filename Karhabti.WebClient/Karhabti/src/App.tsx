@@ -10,6 +10,7 @@ import Profile from './routes/profile';
 import GasFills from './routes/gasFills';
 import ProtectedLoggedInRoute from './components/_global/protectedRoutes/protectedLoggedInRoute';
 import ProtectedNewRoute from './components/_global/protectedRoutes/protectedNewRoute';
+import Mileage from './routes/mileage';
 export default function App() {
 	return (
 		<BrowserRouter>
@@ -28,6 +29,7 @@ export default function App() {
 					<Route path='profile' element={<Outlet />}>
 						<Route path='' element={<Profile />} />
 						<Route path='gas-fills' element={<GasFills />} />
+						<Route path='mileage' element={<Mileage />} />
 					</Route>
 				</Route>
 

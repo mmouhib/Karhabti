@@ -33,10 +33,20 @@ export interface IGasFillPostDto {
 	date: string;
 	price: number;
 	unit: string;
-
-	carId: number
+	carId: number;
 }
 
 export interface IGasFillGetDto extends IGasFillPostDto {
+	id: number;
+}
+
+export interface IMileagePostDto {
+	quantity: number;
+	date: string;
+	unit: string;
+	carId: number;
+}
+
+export interface IMileageGetDto extends IMileagePostDto {
 	id: number;
 }

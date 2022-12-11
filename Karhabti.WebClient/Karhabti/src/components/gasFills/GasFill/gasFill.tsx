@@ -15,7 +15,7 @@ export default function GasFill({
 			</div>
 			<div className="date">
 				<span className="label">date:</span>
-				<p>{data.date}</p>
+				<p>{data.date.substring(0,10)}</p>
 			</div>
 			<div className="quantity">
 				<span className="label">quantity:</span>

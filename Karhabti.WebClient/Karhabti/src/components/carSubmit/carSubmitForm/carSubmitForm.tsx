@@ -103,7 +103,6 @@ export default function CarSubmitForm(props: ICarBodySelectionProps) {
 						<div>
 							<span>Diesel</span>
 							<Switch
-								id="email-alerts"
 								onChange={() => {
 									if (carContext.carData.GasType == 'gasoline') {
 										carContext.setCarData({

@@ -1,9 +1,8 @@
-import '../styles/gasFills.scss';
+import '../styles/mileage.scss';
 import AddIcon from '@mui/icons-material/Add';
-import { IGasFillGetDto } from '../utils/api/Dtos';
+import { IMileageGetDto } from '../utils/api/Dtos';
 import React, { useEffect, useState } from 'react';
-import { getGasFillsByCarId } from '../utils/api/api';
-import GasFillsModal from '../components/gasFills/modal/GasFillsModal';
+import { getMileagesByCarId } from '../utils/api/api';
 import {
 	Table,
 	Thead,
@@ -15,20 +14,21 @@ import {
 	TableCaption,
 	TableContainer,
 } from '@chakra-ui/react';
+import MileageModal from '../components/mileage/modal/mileageModal';
 
-export default function GasFills() {
+export default function Mileage() {
 	// @ts-ignore
 	let car = JSON.parse(localStorage.getItem('car')).id;
-	const [gasFills, setGasFills] = useState<IGasFillGetDto[]>([]);
+	const [mileage, setMileage] = useState<IMileageGetDto[]>([]);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	useEffect(() => {
-		getGasFillsByCarId(car).then((r) => setGasFills(r));
+		getMileagesByCarId(car).then((r) => setMileage(r));
 	}, []);
 
 	return (
 		<div className="gas-fills-container">
-			<GasFillsModal open={isOpen} setOpen={setIsOpen} />
+			<MileageModal open={isOpen} setOpen={setIsOpen} />
 			<div className="left-side">
 				<div
 					className="add-button"
@@ -38,30 +38,29 @@ export default function GasFills() {
 				>
 					<AddIcon fontSize="large" />
 				</div>
-				<p>Click to add a gas fill</p>
+				<p>Click to add a Mileage</p>
 			</div>
-			{gasFills.length == 0 ? (
+			{mileage.length == 0 ? (
 				<div className="empty-list">
 					<span className="empty-title">No data !</span>
 					<p>Your Gas Fills list is empty. add data to see the here</p>
 				</div>
 			) : (
-				<TableContainer style={{ width: '70%' }}>
-					<h1 className="gas-fills-table-header">Gas FIlls</h1>
+				<TableContainer style={{ width: '50%' }}>
+					<h1 className="gas-fills-table-header">Mileages</h1>
 					<Table variant="striped" colorScheme="blue" size={'lg'}>
-						<TableCaption>Gas fills</TableCaption>
+						<TableCaption>Mileages</TableCaption>
 						<Thead>
 							<Tr>
 								<Th>#</Th>
 								<Th>date</Th>
 								<Th isNumeric>quantity</Th>
-								<Th isNumeric>price</Th>
 								<Th>unit</Th>
 							</Tr>
 						</Thead>
 
 						<Tbody>
-							{gasFills.map((element: IGasFillGetDto, index: number) => {
+							{mileage.map((element: IMileageGetDto, index: number) => {
 								// return <GasFill id={index} key={index} data={element} />;
 
 								return (
@@ -69,7 +68,6 @@ export default function GasFills() {
 										<Td>{index}</Td>
 										<Td>{element.date.substring(0, 10)}</Td>
 										<Td isNumeric>{element.quantity}</Td>
-										<Td isNumeric>{element.price}</Td>
 										<Td isNumeric>{element.unit}</Td>
 									</Tr>
 								);
@@ -81,7 +79,6 @@ export default function GasFills() {
 								<Th>#</Th>
 								<Th>date</Th>
 								<Th isNumeric>quantity</Th>
-								<Th isNumeric>price</Th>
 								<Th>unit</Th>
 							</Tr>
 						</Tfoot>

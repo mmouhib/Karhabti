@@ -12,7 +12,7 @@
     position: fixed;
     top: 50vh;
     left: 10px;
-    height: 100px;
+    height: 150px;
     width: 20%;
     display: flex;
     align-items: center;
@@ -21,7 +21,8 @@
     gap: 20%;
 
     & p {
-      font-family: 'Righteous', cursive;
+      font-family: 'roboto', cursive;
+      font-weight: bold;
     }
 
     & .add-button {
@@ -46,6 +47,12 @@
         background-color: #1534de;
       }
     }
+  }
+
+  & .gas-fills-table-header{
+    font-family: 'Righteous', cursive;
+    font-size: 2em;
+    text-align: center;
   }
 
   & .items-container {

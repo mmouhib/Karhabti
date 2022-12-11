@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ICarPostDto, IGasFillPostDto, IUserPostDto } from './Dtos';
+import { ICarPostDto, IGasFillPostDto, IMileagePostDto, IUserPostDto } from './Dtos';
 
 const userEndpoint: string = 'https://localhost:7129/api/user';
 const carEndpoint: string = 'https://localhost:7129/api/car';
@@ -40,11 +40,8 @@ export async function addCar(data: ICarPostDto): Promise<void> {
 	});
 }
 
-export async function addGasFill(data: IGasFillPostDto): Promise<void> {
-	console.log(data);
-	axios.post(gasFillsEndpoint, data).then(() => {
-		console.log('gas fill submitted');
-	});
+export async function addGasFill(data: IGasFillPostDto) {
+	axios.post(gasFillsEndpoint, data);
 }
 
 export async function getUserAuth(email: string, password: string) {
@@ -56,3 +53,19 @@ export async function getUserAuth(email: string, password: string) {
 export async function getCarByOwnerId(id: number) {
 	return await axios.get(`https://localhost:7129/api/car/owner/${id}`);
 }
+
+export async function getGasFillsByCarId(id: number) {
+	const result = await axios.get(`https://localhost:7129/api/gas/car/${id}`);
+	return result.data;
+}
+
+
+export async function getMileagesByCarId(id: number) {
+	const result = await axios.get(`https://localhost:7129/api/mileage/car/${id}`);
+	return result.data;
+}
+
+export async function addMileage(data: IMileagePostDto) {
+	axios.post(mileageEndpoint, data);
+}
+

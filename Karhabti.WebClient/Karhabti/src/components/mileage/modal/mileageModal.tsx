@@ -8,15 +8,14 @@ import {
 	ModalCloseButton,
 	Button,
 } from '@chakra-ui/react';
-import './gasFillsModal.scss';
+import './mileageModal.scss';
 import React, { useState } from 'react';
 import CustomSlider from '../../carSubmit/carSubmitForm/slider/slider';
-import CustomInput from '../../_global/input/input';
 import { Switch } from '@chakra-ui/react';
 import CustomDropdown from '../../_global/dropdown/dropdown';
 import { dropdownContentLister } from '../../../static/functions';
-import { IGasFillPostDto } from '../../../utils/api/Dtos';
-import { addGasFill } from '../../../utils/api/api';
+import { IMileagePostDto } from '../../../utils/api/Dtos';
+import { addMileage } from '../../../utils/api/api';
 import { dateFormatter } from '../../signup/content/signupContent';
 
 interface IGasFillModalProps {
@@ -24,22 +23,20 @@ interface IGasFillModalProps {
 	setOpen: (arg: boolean) => void;
 }
 
-export default function GasFillsModal({ open, setOpen }: IGasFillModalProps) {
+export default function MileageModal({ open, setOpen }: IGasFillModalProps) {
 	const [quantity, setQuantity] = useState(1);
 	const [now, setNow] = useState(false);
-	const [price, setPrice] = useState('');
-	const [unit, setUnit] = useState<'liter' | 'gallon'>('liter');
+	const [unit, setUnit] = useState<'kilometer' | 'miles'>('kilometer');
 	const [day, setDay] = useState<string>('');
 	const [month, setMonth] = useState<string>('');
 	const [year, setYear] = useState<string>('');
 
 	const submitHandler = () => {
-		const data: IGasFillPostDto = {
+		const data: IMileagePostDto = {
 			quantity: quantity,
 			date: now
 				? `${new Date().getFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()}T17:16:40`
 				: dateFormatter(year, month, day),
-			price: parseInt(price),
 			unit: unit,
 			// @ts-ignore
 			carId: JSON.parse(localStorage.getItem('car')).id,
@@ -47,7 +44,7 @@ export default function GasFillsModal({ open, setOpen }: IGasFillModalProps) {
 
 		console.log(data);
 
-		addGasFill(data);
+		addMileage(data);
 	};
 
 	const closeModal = (): void => setOpen(false);
@@ -56,23 +53,15 @@ export default function GasFillsModal({ open, setOpen }: IGasFillModalProps) {
 		<Modal isOpen={open} onClose={closeModal}>
 			<ModalOverlay />
 			<ModalContent className="modal-content">
-				<ModalHeader>Submit a Gas fill</ModalHeader>
+				<ModalHeader>Submit a Mileage record</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody className="gas-fills-modal-section">
 					<CustomSlider
-						label={'quantity'}
+						label="distance"
 						min={1}
 						max={200}
 						value={quantity}
 						onChange={setQuantity}
-					/>
-
-					<CustomInput
-						width="100%"
-						placeholder={'price'}
-						type="number"
-						value={price}
-						setValue={setPrice}
 					/>
 
 					<div className="now-section">
@@ -112,7 +101,9 @@ export default function GasFillsModal({ open, setOpen }: IGasFillModalProps) {
 						<span>Liter</span>
 						<Switch
 							onChange={() => {
-								unit == 'gallon' ? setUnit('liter') : setUnit('gallon');
+								unit == 'kilometer'
+									? setUnit('miles')
+									: setUnit('kilometer');
 							}}
 						/>
 						<span>Gallon</span>
