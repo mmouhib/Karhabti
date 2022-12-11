@@ -17,7 +17,7 @@ import CustomDropdown from '../../_global/dropdown/dropdown';
 import { dropdownContentLister } from '../../../static/functions';
 import { IGasFillPostDto } from '../../../utils/api/Dtos';
 import { addGasFill } from '../../../utils/api/api';
-import { dateFormatter } from '../../signup/content/signupContent';
+import {dateFormatter} from '../../../static/functions';
 
 interface IGasFillModalProps {
 	open: boolean;

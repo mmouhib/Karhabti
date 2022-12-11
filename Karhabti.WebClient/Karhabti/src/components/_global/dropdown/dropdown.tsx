@@ -5,6 +5,8 @@ interface IDropdownProps {
 	label: string;
 	list: string[];
 	setValue: (arg: string) => void;
+
+	error?: boolean;
 }
 
 export default function CustomDropdown(props: IDropdownProps) {
@@ -16,6 +18,10 @@ export default function CustomDropdown(props: IDropdownProps) {
 				</div>
 			)}
 			<select
+				style={{
+					border: props.error ? '2px solid #f3c2c2' : '',
+					backgroundColor: props.error ? '#ffe0e0' : '',
+				}}
 				name="select"
 				id="select"
 				onChange={(e) => {

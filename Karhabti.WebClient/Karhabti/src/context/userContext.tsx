@@ -19,8 +19,8 @@ export default function UserDataContextProvider(props: IProviderProps) {
 		lastName: '',
 		email: '',
 		password: '',
-		birthDate: '2019-01-06T17:16:40',
-		gender: 'male',
+		birthDate: '',
+		gender: '',
 		avatar: '',
 	});
 

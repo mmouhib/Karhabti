@@ -7,6 +7,7 @@ interface ICustomInputProps {
 	value: string;
 	setValue: (arg: string) => void;
 	label?: string;
+	error?: boolean;
 }
 
 export default function CustomInput(props: ICustomInputProps) {
@@ -27,6 +28,10 @@ export default function CustomInput(props: ICustomInputProps) {
 					props.setValue(e.target.value);
 				}}
 				className="custom-input"
+				style={{
+					border: props.error ? '2px solid #f3c2c2' : '',
+					backgroundColor: props.error ? '#ffe0e0' : '',
+				}}
 				type={props.type}
 				placeholder={props.placeholder}
 			/>

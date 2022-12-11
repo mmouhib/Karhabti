@@ -4,35 +4,102 @@ import CustomInput from '../../_global/input/input';
 import CustomDropdown from '../../_global/dropdown/dropdown';
 import FormButton from '../../_global/formButton/formButton';
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { IUserContext, userContext } from '../../../context/userContext';
-import { dropdownContentLister } from '../../../static/functions';
-
-/*
- * the 'dateFormatter' function formats the date string to the wanted one.
- * in order to submit it, the date should be like this format : "2019-01-06T17:16:40"
- * so this functions takes the day, month and year and formats it
- * */
-export function dateFormatter(
-	year: string,
-	month: string,
-	day: string
-): string {
-	let localDay: string;
-	let localMonth: string;
-
-	day.length == 1 ? (localDay = '0' + day) : (localDay = day);
-	month.length == 1 ? (localMonth = '0' + month) : (localMonth = month);
-	return `${year}-${localMonth}-${localDay}T17:16:40`;
-}
+import {
+	dateFormatter,
+	dropdownContentLister,
+} from '../../../static/functions';
 
 export default function SignupContent() {
+	const navigate = useNavigate();
+
 	const userDataContext: IUserContext = useContext(userContext);
 
 	const [confirmPassword, setConfirmPassword] = useState<string>('');
-	const [day, setDay] = useState<string>('10');
-	const [month, setMonth] = useState<string>('10');
-	const [year, setYear] = useState<string>('2000');
+	const [day, setDay] = useState<string>('');
+	const [month, setMonth] = useState<string>('');
+	const [year, setYear] = useState<string>('');
+
+	const [firstNameError, setFirstNameError] = useState<boolean>(false);
+	const [lastNameError, setLastNameError] = useState<boolean>(false);
+	const [usernameError, setUsernameError] = useState<boolean>(false);
+	const [dayError, setDayError] = useState<boolean>(false);
+	const [monthError, setMonthError] = useState<boolean>(false);
+	const [yearError, setYearError] = useState<boolean>(false);
+	const [passwordError, setPasswordError] = useState<boolean>(false);
+	const [confirmPasswordError, setConfirmPasswordError] =
+		useState<boolean>(false);
+	const [genderError, setGenderError] = useState<boolean>(false);
+	const [emailError, setEmailError] = useState<boolean>(false);
+
+	function formValidator() {
+		let res: boolean = true;
+
+		if (userDataContext.userData.firstName == '') {
+			setFirstNameError(true);
+			res = false;
+		}
+
+		if (userDataContext.userData.lastName == '') {
+			setLastNameError(true);
+			res = false;
+		}
+
+		if (userDataContext.userData.username == '') {
+			setUsernameError(true);
+			res = false;
+		}
+
+		if (
+			userDataContext.userData.gender == '' ||
+			userDataContext.userData.gender == '0'
+		) {
+			setGenderError(true);
+			res = false;
+		}
+
+		if (
+			!userDataContext.userData.email
+				.toLowerCase()
+				.match(
+					/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+				) ||
+			userDataContext.userData.email == ''
+		) {
+			setEmailError(true);
+			res = false;
+		}
+
+		if (userDataContext.userData.password == '') {
+			setPasswordError(true);
+			res = false;
+		}
+
+		if (
+			confirmPassword != userDataContext.userData.password ||
+			confirmPassword == ''
+		) {
+			setConfirmPasswordError(true);
+			res = false;
+		}
+
+		if (day == '' || day == '0') {
+			setDayError(true);
+			res = false;
+		}
+
+		if (month == '' || month == '0') {
+			setMonthError(true);
+			res = false;
+		}
+		if (year == '' || year == '0') {
+			setYearError(true);
+			res = false;
+		}
+
+		return res;
+	}
 
 	/*
 	 * change the birthDate field in the userContext whenever
@@ -52,14 +119,35 @@ export default function SignupContent() {
 			lastName: '',
 			email: '',
 			password: '',
-			birthDate: '2019-01-06T17:16:40',
-			gender: 'male',
+			birthDate: '',
+			gender: '',
 			avatar: '',
 		});
 		setConfirmPassword('');
 		setDay('');
 		setMonth('');
 		setYear('');
+	}
+
+	function validateSubmit() {
+		let res = formValidator();
+
+		setInterval(() => {
+			setFirstNameError(false);
+			setLastNameError(false);
+			setUsernameError(false);
+			setDayError(false);
+			setMonthError(false);
+			setYearError(false);
+			setPasswordError(false);
+			setConfirmPasswordError(false);
+			setGenderError(false);
+			setEmailError(false);
+		}, 2000);
+
+		if (res) {
+			navigate('/signup/avatar');
+		}
 	}
 
 	return (
@@ -77,6 +165,7 @@ export default function SignupContent() {
 						placeholder="Enter your first name"
 						type="text"
 						value={userDataContext.userData.firstName}
+						error={firstNameError}
 						setValue={(arg: string) => {
 							userDataContext.setUserData({
 								...userDataContext.userData,
@@ -89,6 +178,7 @@ export default function SignupContent() {
 						width="50%"
 						placeholder="Enter your last name"
 						type="text"
+						error={lastNameError}
 						value={userDataContext.userData.lastName}
 						setValue={(arg: string) => {
 							userDataContext.setUserData({
@@ -104,6 +194,7 @@ export default function SignupContent() {
 						label="Username"
 						width="65%"
 						placeholder="Enter your username"
+						error={usernameError}
 						type="text"
 						value={userDataContext.userData.username}
 						setValue={(arg: string) => {
@@ -114,6 +205,7 @@ export default function SignupContent() {
 						}}
 					/>
 					<CustomDropdown
+						error={genderError}
 						width="35%"
 						label="Gender"
 						list={['male', 'female']}
@@ -128,6 +220,7 @@ export default function SignupContent() {
 
 				<div className="input-container">
 					<CustomInput
+						error={emailError}
 						label="Email"
 						width="100%"
 						placeholder="Enter your email"
@@ -144,6 +237,7 @@ export default function SignupContent() {
 
 				<div className="input-container">
 					<CustomInput
+						error={passwordError}
 						label="Password"
 						width="50%"
 						placeholder="Enter your password"
@@ -157,6 +251,7 @@ export default function SignupContent() {
 						}}
 					/>
 					<CustomInput
+						error={confirmPasswordError}
 						label="Confirm"
 						width="50%"
 						placeholder="Confirm your password"
@@ -168,18 +263,21 @@ export default function SignupContent() {
 
 				<div className="input-container">
 					<CustomDropdown
+						error={dayError}
 						width="32%"
 						label="day"
 						list={dropdownContentLister(1, 32)}
 						setValue={setDay}
 					/>
 					<CustomDropdown
+						error={monthError}
 						width="32%"
 						label="month"
 						list={dropdownContentLister(1, 13)}
 						setValue={setMonth}
 					/>
 					<CustomDropdown
+						error={yearError}
 						width="36%"
 						label="year"
 						list={dropdownContentLister(1920, 2015)}
@@ -188,9 +286,11 @@ export default function SignupContent() {
 				</div>
 
 				<div className="button-container">
-					<Link to={'avatar'}>
-						<FormButton width="100%" text="sign up" onClick={() => {}} />
-					</Link>
+					<FormButton
+						width="80%"
+						text="sign up"
+						onClick={validateSubmit}
+					/>
 					<div
 						className="clear-button"
 						onClick={() => {

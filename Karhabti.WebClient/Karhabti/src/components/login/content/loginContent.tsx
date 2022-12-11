@@ -5,8 +5,9 @@ import LoginImage from '../../../assets/login.png';
 import CustomInput from '../../_global/input/input';
 import FormButton from '../../_global/formButton/formButton';
 import { getUserAuth } from '../../../utils/api/api';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function LoginContent() {
 	const navigate = useNavigate();
@@ -15,6 +16,39 @@ export default function LoginContent() {
 	const [password, setPassword] = useState<string>('');
 	const [emailError, setEmailError] = useState<boolean>(false);
 	const [passwordError, setPasswordError] = useState<boolean>(false);
+
+	useEffect(() => {
+		//remove input error after 3 seconds
+		if (!passwordError || !emailError) {
+			setInterval(() => {
+				setEmailError(false);
+				setPasswordError(false);
+			}, 3000);
+		}
+	}, [emailError, passwordError]);
+
+	function submitHandler() {
+		if (
+			!email
+				.toLowerCase()
+				.match(
+					/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+				)
+		) {
+			setEmailError(true);
+		} else {
+			getUserAuth(email, password)
+				.then((r) => {
+					localStorage.clear();
+					localStorage.setItem('user', JSON.stringify(r.data));
+					navigate('/profile');
+				})
+				.catch(() => {
+					setEmailError(true);
+					setPasswordError(true);
+				});
+		}
+	}
 
 	return (
 		<div className="login-content-container">
@@ -37,6 +71,7 @@ export default function LoginContent() {
 							label="email"
 							value={email}
 							setValue={setEmail}
+							error={emailError}
 						/>
 						<CustomInput
 							width="60%"
@@ -45,36 +80,24 @@ export default function LoginContent() {
 							label="password"
 							value={password}
 							setValue={setPassword}
+							error={passwordError}
 						/>
 					</div>
-					<div className="additions">
-						<div className="remember-login">
-							<input type="checkbox" />
-							<p>remember my account</p>
-						</div>
+					{/*<div className="additions">*/}
+					{/*	<div className="remember-login">*/}
+					{/*		<input type="checkbox" />*/}
+					{/*		<p>remember my account</p>*/}
+					{/*	</div>*/}
 
-						<span>Reset Password</span>
-					</div>
-					<FormButton
-						width="50%"
-						text="Log In"
-						onClick={() => {
-							getUserAuth(email, password)
-								.then((r) => {
-									localStorage.clear();
-									localStorage.setItem('user', JSON.stringify(r.data));
-									navigate('/profile');
-								})
-								.catch(() => {
-									setEmailError(true);
-									setPasswordError(true);
-									alert('user not found');
-								});
-						}}
-					/>
+					{/*	<span>Reset Password</span>*/}
+					{/*</div>*/}
+					<FormButton width="60%" text="Log In" onClick={submitHandler} />
 
 					<p className="create-account">
-						Don't have an account ? <span>Create One</span>
+						Don't have an account ?{' '}
+						<span>
+							<Link to={'/signup'}>Create One</Link>
+						</span>
 					</p>
 				</div>
 			</div>

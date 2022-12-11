@@ -16,7 +16,7 @@ import CustomDropdown from '../../_global/dropdown/dropdown';
 import { dropdownContentLister } from '../../../static/functions';
 import { IMileagePostDto } from '../../../utils/api/Dtos';
 import { addMileage } from '../../../utils/api/api';
-import { dateFormatter } from '../../signup/content/signupContent';
+import {dateFormatter} from '../../../static/functions';
 
 interface IGasFillModalProps {
 	open: boolean;
