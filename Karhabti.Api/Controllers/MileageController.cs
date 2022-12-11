@@ -26,7 +26,7 @@ public class MileageController : ControllerBase
     public ActionResult<IEnumerable<MileageGetDto>> GetAllMileages()
     {
         var mileages = _repository.GetAll();
-        if (mileages.Any()) return Ok(_mapper.Map<MileageGetDto>(mileages));
+        if (mileages.Any()) return Ok(_mapper.Map<IEnumerable<MileageGetDto>>(mileages));
         return NotFound();
     }
 
@@ -51,5 +51,12 @@ public class MileageController : ControllerBase
             new { id = mappedResult.Id },
             mappedResult
         );
+    }
+
+    [HttpGet("car/{id}", Name = "GetMileageByCarId")]
+    public ActionResult<IEnumerable<MileageGetDto>> GetMileageByCarId(int id)
+    {
+        var mileage = _repository.GetMileageByCarId(id);
+        return Ok(_mapper.Map<IEnumerable<MileageGetDto>>(mileage));
     }
 }

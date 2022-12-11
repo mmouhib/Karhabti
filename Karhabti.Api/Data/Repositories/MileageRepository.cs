@@ -35,4 +35,9 @@ public class MileageRepository : IMileageRepo
     public void Update(Mileage entityInstance)
     {
     }
+
+    public IEnumerable<Mileage> GetMileageByCarId(int id)
+    {
+        return _context.Mileages.ToList().Where(mileage => mileage.CarId == id);
+    }
 }
