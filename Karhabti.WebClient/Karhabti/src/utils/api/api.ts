@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { ICarPostDto, IGasFillPostDto, IMileagePostDto, IUserPostDto } from './Dtos';
+import {
+	ICarPostDto,
+	IGasFillPostDto,
+	IMileagePostDto,
+	IUserPostDto,
+} from './Dtos';
 
 const userEndpoint: string = 'https://localhost:7129/api/user';
 const carEndpoint: string = 'https://localhost:7129/api/car';
@@ -59,9 +64,10 @@ export async function getGasFillsByCarId(id: number) {
 	return result.data;
 }
 
-
 export async function getMileagesByCarId(id: number) {
-	const result = await axios.get(`https://localhost:7129/api/mileage/car/${id}`);
+	const result = await axios.get(
+		`https://localhost:7129/api/mileage/car/${id}`
+	);
 	return result.data;
 }
 
@@ -69,3 +75,6 @@ export async function addMileage(data: IMileagePostDto) {
 	axios.post(mileageEndpoint, data);
 }
 
+export async function deleteUser(id: number) {
+	axios.delete(`${userEndpoint}/${id}`);
+}

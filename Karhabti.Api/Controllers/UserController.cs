@@ -59,4 +59,14 @@ public class UserController : ControllerBase
         if (result == null) return NotFound();
         return Ok(_mapper.Map<UserGetDto>(result));
     }
+
+    [HttpDelete("{id}")]
+    public ActionResult DeleteUser(int id)
+    {
+        var userToDelete = _repository.GetById(id);
+        if (userToDelete == null) return NotFound();
+        _repository.Delete(userToDelete);
+        _unitOfWork.Commit();
+        return NoContent();
+    }
 }
