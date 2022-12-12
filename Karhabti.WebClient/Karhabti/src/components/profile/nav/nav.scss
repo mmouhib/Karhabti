@@ -6,19 +6,20 @@
   padding: 0 20px;
   height: 7%;
 
-  & .logout{
+  & .logout {
     cursor: pointer;
     color: #D0241A;
     border: 2px solid #D0241A;
-    padding:2px 7px;
+    padding: 2px 7px;
     border-radius: 5px;
-    user-select: none;font-family: 'Righteous', cursive;
+    user-select: none;
+    font-family: 'Righteous', cursive;
 
-    &:hover{
+    &:hover {
       background-color: #D0241A;
       color: white;
-
       transition: 0.4s all;
     }
+    
   }
 }
