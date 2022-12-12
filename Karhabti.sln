@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karhabti.Api", "Karhabti.Api\Karhabti.Api.csproj", "{3132B97B-1CD5-49C4-85BD-E71077E2EF55}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Karhabti.Api", "Karhabti.Api\Karhabti.Api.csproj", "{3132B97B-1CD5-49C4-85BD-E71077E2EF55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karhabti.Test", "Karhabti.Test\Karhabti.Test.csproj", "{25C2D547-4FBC-4CA1-BBA5-99CA12841CB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,15 @@ Global
 		{3132B97B-1CD5-49C4-85BD-E71077E2EF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3132B97B-1CD5-49C4-85BD-E71077E2EF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3132B97B-1CD5-49C4-85BD-E71077E2EF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25C2D547-4FBC-4CA1-BBA5-99CA12841CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25C2D547-4FBC-4CA1-BBA5-99CA12841CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25C2D547-4FBC-4CA1-BBA5-99CA12841CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25C2D547-4FBC-4CA1-BBA5-99CA12841CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D2F3E98-0166-4F13-83AF-0C710A625B5A}
 	EndGlobalSection
 EndGlobal
